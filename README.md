@@ -145,6 +145,8 @@ Requirements: Node.js/npm and Python 3.9 or later.
 
 All commands should be run from the **repository root** (`Dark-Lens/`) using the canonical **root virtual environment** (`.venv`).
 
+If you intentionally run the backend from inside `backend/`, activate the root environment with `source ../.venv/bin/activate` and use `python -m uvicorn app.main:app --reload --port 8001`. From the repository root, use the `backend.app.main:app` command shown below.
+
 > **Environment notice:** A secondary `backend/.venv` directory exists from earlier development and is preserved for compatibility. Do not delete it yet, but use the root `.venv` as the single canonical environment for all setup, run, and evaluation commands.
 
 ### 1. Start the backend
