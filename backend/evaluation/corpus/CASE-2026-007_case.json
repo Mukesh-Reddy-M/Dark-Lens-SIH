@@ -1,0 +1,297 @@
+{
+  "schema_version": "1.0",
+  "data_mode": "synthetic",
+  "case": {
+    "id": "CASE-2026-007",
+    "title": "Lowtide",
+    "description": "Fictional case for demonstration: rumours and anonymous tips conflict with archived records on invented marketplaces (1 Aug - 14 Oct 2026). All names and identifiers are invented."
+  },
+  "sources": [
+    {
+      "id": "SRC-06",
+      "name": "Analyst note",
+      "source_type": "analyst_note",
+      "reliability": 0.5
+    },
+    {
+      "id": "SRC-04",
+      "name": "Anonymous tip line",
+      "source_type": "tip_line",
+      "reliability": 0.3
+    },
+    {
+      "id": "SRC-02",
+      "name": "Fenwick archived dump",
+      "source_type": "archived_market_dump",
+      "reliability": 0.8
+    },
+    {
+      "id": "SRC-03",
+      "name": "Forum rumour thread",
+      "source_type": "forum_scrape",
+      "reliability": 0.25
+    },
+    {
+      "id": "SRC-01",
+      "name": "Hollis archived dump",
+      "source_type": "archived_market_dump",
+      "reliability": 0.85
+    },
+    {
+      "id": "SRC-05",
+      "name": "Public ledger extract",
+      "source_type": "blockchain_public",
+      "reliability": 0.9
+    }
+  ],
+  "entities": [
+    {
+      "id": "ENT-004",
+      "type": "handle",
+      "display_label": "gull_street (Fenwick Exchange)"
+    },
+    {
+      "id": "ENT-001",
+      "type": "handle",
+      "display_label": "lowtide_trader (Hollis Market)"
+    },
+    {
+      "id": "ENT-003",
+      "type": "handle",
+      "display_label": "norrow (Hollis Market)"
+    },
+    {
+      "id": "ENT-002",
+      "type": "handle",
+      "display_label": "tide_low (Fenwick Exchange)"
+    },
+    {
+      "id": "ENT-006",
+      "type": "pgp_key",
+      "display_label": "FP10 5EED 0C10 CE00 0000 0000 0000 0000 0000 5EED 0010"
+    },
+    {
+      "id": "ENT-005",
+      "type": "pgp_key",
+      "display_label": "FP9 5EED 0C09 CE00 0000 0000 0000 0000 0000 5EED 0009"
+    },
+    {
+      "id": "ENT-010",
+      "type": "service",
+      "display_label": "Fenwick Exchange (fenwick.synthetic.invalid)"
+    },
+    {
+      "id": "ENT-009",
+      "type": "service",
+      "display_label": "Hollis Market (hollis.synthetic.invalid)"
+    },
+    {
+      "id": "ENT-007",
+      "type": "wallet",
+      "display_label": "SYNTH-W11-NORROW000000000000011"
+    },
+    {
+      "id": "ENT-008",
+      "type": "wallet",
+      "display_label": "SYNTH-W12-GULL000000000000012"
+    }
+  ],
+  "observations": [
+    {
+      "id": "OBS-001",
+      "source_id": "SRC-01",
+      "observed_at": "2026-08-01T10:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "lowtide_trader created on Hollis Market.",
+      "confidence": 0.85,
+      "entity_id": "ENT-001"
+    },
+    {
+      "id": "OBS-002",
+      "source_id": "SRC-01",
+      "observed_at": "2026-08-01T10:03:00Z",
+      "evidence_type": "key_listed",
+      "summary": "lowtide_trader profile lists PGP-style key FP9.",
+      "confidence": 0.85,
+      "entity_id": "ENT-005",
+      "details": {
+        "actor_entity_id": "ENT-001",
+        "key": "ENT-005"
+      }
+    },
+    {
+      "id": "OBS-003",
+      "source_id": "SRC-01",
+      "observed_at": "2026-08-06T10:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "norrow created on Hollis Market.",
+      "confidence": 0.85,
+      "entity_id": "ENT-003"
+    },
+    {
+      "id": "OBS-004",
+      "source_id": "SRC-01",
+      "observed_at": "2026-08-06T10:04:00Z",
+      "evidence_type": "key_listed",
+      "summary": "norrow profile lists PGP-style key FP9.",
+      "confidence": 0.85,
+      "entity_id": "ENT-005",
+      "details": {
+        "actor_entity_id": "ENT-003",
+        "key": "ENT-005"
+      }
+    },
+    {
+      "id": "OBS-005",
+      "source_id": "SRC-01",
+      "observed_at": "2026-08-09T10:00:00Z",
+      "evidence_type": "wallet_listed",
+      "summary": "norrow payment instructions use wallet W11.",
+      "confidence": 0.85,
+      "entity_id": "ENT-007",
+      "details": {
+        "actor_entity_id": "ENT-003",
+        "wallet": "ENT-007"
+      }
+    },
+    {
+      "id": "OBS-006",
+      "source_id": "SRC-02",
+      "observed_at": "2026-08-12T09:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "tide_low created on Fenwick Exchange.",
+      "confidence": 0.8,
+      "entity_id": "ENT-002"
+    },
+    {
+      "id": "OBS-007",
+      "source_id": "SRC-02",
+      "observed_at": "2026-08-12T09:05:00Z",
+      "evidence_type": "key_listed",
+      "summary": "tide_low profile lists PGP-style key FP10.",
+      "confidence": 0.8,
+      "entity_id": "ENT-006",
+      "details": {
+        "actor_entity_id": "ENT-002",
+        "key": "ENT-006"
+      }
+    },
+    {
+      "id": "OBS-008",
+      "source_id": "SRC-03",
+      "observed_at": "2026-08-20T14:00:00Z",
+      "evidence_type": "rumour",
+      "summary": "Forum rumour thread claims tide_low is lowtide_trader under a new name.",
+      "confidence": 0.25,
+      "entity_id": "ENT-002"
+    },
+    {
+      "id": "OBS-009",
+      "source_id": "SRC-03",
+      "observed_at": "2026-08-21T14:00:00Z",
+      "evidence_type": "rumour",
+      "summary": "Same thread claims lowtide_trader 'has been arrested' (no source given).",
+      "confidence": 0.2,
+      "entity_id": "ENT-001"
+    },
+    {
+      "id": "OBS-010",
+      "source_id": "SRC-04",
+      "observed_at": "2026-08-30T15:00:00Z",
+      "evidence_type": "tip",
+      "summary": "Anonymous tip says tide_low and norrow are the same person.",
+      "confidence": 0.3,
+      "entity_id": "ENT-002"
+    },
+    {
+      "id": "OBS-011",
+      "source_id": "SRC-02",
+      "observed_at": "2026-09-03T09:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "gull_street created on Fenwick Exchange; no key listed.",
+      "confidence": 0.8,
+      "entity_id": "ENT-004"
+    },
+    {
+      "id": "OBS-012",
+      "source_id": "SRC-03",
+      "observed_at": "2026-09-05T14:00:00Z",
+      "evidence_type": "rumour",
+      "summary": "Forum rumour says gull_street is a copy of tide_low.",
+      "confidence": 0.25,
+      "entity_id": "ENT-004"
+    },
+    {
+      "id": "OBS-013",
+      "source_id": "SRC-05",
+      "observed_at": "2026-09-10T16:00:00Z",
+      "evidence_type": "payment_flow",
+      "summary": "Ledger: W12 is credited once by W11.",
+      "confidence": 0.8,
+      "entity_id": "ENT-008"
+    },
+    {
+      "id": "OBS-014",
+      "source_id": "SRC-02",
+      "observed_at": "2026-09-15T10:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "tide_low signs off 'cheers, T'.",
+      "confidence": 0.6,
+      "entity_id": "ENT-002"
+    },
+    {
+      "id": "OBS-015",
+      "source_id": "SRC-01",
+      "observed_at": "2026-09-16T10:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "norrow signs off 'cheers, T'.",
+      "confidence": 0.6,
+      "entity_id": "ENT-003"
+    },
+    {
+      "id": "OBS-016",
+      "source_id": "SRC-01",
+      "observed_at": "2026-09-18T10:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "lowtide_trader signs off 'regards'.",
+      "confidence": 0.6,
+      "entity_id": "ENT-001"
+    },
+    {
+      "id": "OBS-017",
+      "source_id": "SRC-06",
+      "observed_at": "2026-09-22T12:00:00Z",
+      "evidence_type": "analyst_note",
+      "summary": "The tip is anonymous (reliability 0.30) and 'cheers' is a common sign-off; the match is weak. Needs more evidence.",
+      "confidence": 0.4,
+      "entity_id": "ENT-002"
+    },
+    {
+      "id": "OBS-018",
+      "source_id": "SRC-04",
+      "observed_at": "2026-09-28T15:00:00Z",
+      "evidence_type": "tip",
+      "summary": "Anonymous tip: lowtide_trader pays a contractor using wallet W12.",
+      "confidence": 0.3,
+      "entity_id": "ENT-001"
+    },
+    {
+      "id": "OBS-019",
+      "source_id": "SRC-03",
+      "observed_at": "2026-10-02T14:00:00Z",
+      "evidence_type": "rumour",
+      "summary": "Forum rumour: norrow is a 'known scammer' (no evidence).",
+      "confidence": 0.2,
+      "entity_id": "ENT-003"
+    },
+    {
+      "id": "OBS-020",
+      "source_id": "SRC-01",
+      "observed_at": "2026-10-08T10:00:00Z",
+      "evidence_type": "account_inactive",
+      "summary": "lowtide_trader goes inactive on Hollis Market.",
+      "confidence": 0.85,
+      "entity_id": "ENT-001"
+    }
+  ]
+}

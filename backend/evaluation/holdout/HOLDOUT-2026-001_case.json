@@ -1,0 +1,285 @@
+{
+  "schema_version": "1.0",
+  "case": {
+    "id": "HOLDOUT-2026-001",
+    "title": "Foxglove",
+    "description": "Synthetic holdout case: an invented botanical vendor migrates across three simulated marketplaces (Bramble Bazaar, Briar Road, Heather Forum). Features shared PGP keys, wallets, writing habits, an infrastructure match, an unverified forum rumor decoy, a shared exchange pooling decoy, and weak writing overlap with concurrent activity."
+  },
+  "sources": [
+    {
+      "id": "SRC-01",
+      "name": "Bramble Bazaar archived dump",
+      "source_type": "archived_market_dump",
+      "reliability": 0.9
+    },
+    {
+      "id": "SRC-02",
+      "name": "Briar Road archived dump",
+      "source_type": "archived_market_dump",
+      "reliability": 0.85
+    },
+    {
+      "id": "SRC-03",
+      "name": "Heather Forum archived scrape",
+      "source_type": "forum_scrape",
+      "reliability": 0.8
+    },
+    {
+      "id": "SRC-04",
+      "name": "Public scan snapshot",
+      "source_type": "public_scan",
+      "reliability": 0.85
+    },
+    {
+      "id": "SRC-05",
+      "name": "Certificate transparency log",
+      "source_type": "ct_log",
+      "reliability": 0.9
+    },
+    {
+      "id": "SRC-06",
+      "name": "Public ledger extract",
+      "source_type": "blockchain_public",
+      "reliability": 0.85
+    },
+    {
+      "id": "SRC-07",
+      "name": "Community forum rumor thread",
+      "source_type": "forum_scrape",
+      "reliability": 0.35
+    },
+    {
+      "id": "SRC-08",
+      "name": "Analyst note",
+      "source_type": "analyst_note",
+      "reliability": 0.5
+    }
+  ],
+  "entities": [
+    {
+      "id": "ENT-001",
+      "type": "handle",
+      "display_label": "foxglove_vendor (Bramble Bazaar)"
+    },
+    {
+      "id": "ENT-002",
+      "type": "handle",
+      "display_label": "glove_craft (Briar Road)"
+    },
+    {
+      "id": "ENT-003",
+      "type": "handle",
+      "display_label": "fox_botanist (Heather Forum)"
+    },
+    {
+      "id": "ENT-004",
+      "type": "handle",
+      "display_label": "foxglove_imposter (Heather Forum)"
+    },
+    {
+      "id": "ENT-005",
+      "type": "handle",
+      "display_label": "briar_buyer_88 (Briar Road)"
+    },
+    {
+      "id": "ENT-006",
+      "type": "handle",
+      "display_label": "belladonna_apothecary (Bramble Bazaar)"
+    },
+    {
+      "id": "ENT-007",
+      "type": "handle",
+      "display_label": "nightshade_lab (Briar Road)"
+    },
+    {
+      "id": "ENT-008",
+      "type": "pgp_key",
+      "display_label": "FP81 4455 AA11 BB22 CC33 DD44 EE55 FF66 0011 2233"
+    },
+    {
+      "id": "ENT-009",
+      "type": "wallet",
+      "display_label": "SYNTH-W81-FOX0000000000000001"
+    },
+    {
+      "id": "ENT-010",
+      "type": "service",
+      "display_label": "Bramble Bazaar (bramble-market.synthetic.invalid)"
+    },
+    {
+      "id": "ENT-011",
+      "type": "infrastructure",
+      "display_label": "198.51.100.42 (cert CS-4401)"
+    },
+    {
+      "id": "ENT-012",
+      "type": "wallet",
+      "display_label": "SYNTH-EXCH-POOL-880000000001"
+    }
+  ],
+  "observations": [
+    {
+      "id": "OBS-001",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-001",
+      "observed_at": "2026-08-01T10:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "Handle foxglove_vendor registered on Bramble Bazaar.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-002",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-008",
+      "observed_at": "2026-08-01T10:05:00Z",
+      "evidence_type": "key_listed",
+      "summary": "foxglove_vendor profile lists PGP key FP81.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-003",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-009",
+      "observed_at": "2026-08-01T10:10:00Z",
+      "evidence_type": "wallet_listed",
+      "summary": "foxglove_vendor payment instructions specify wallet W81.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-004",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-001",
+      "observed_at": "2026-08-03T11:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "foxglove_vendor posts sign off 'in flora we trust' and write dates as DD-Mon-YYYY.",
+      "confidence": 0.65
+    },
+    {
+      "id": "OBS-005",
+      "source_id": "SRC-05",
+      "entity_id": "ENT-010",
+      "observed_at": "2026-08-05T08:00:00Z",
+      "evidence_type": "certificate_issuance",
+      "summary": "Certificate transparency log records CS-4401 issued for bramble-market.synthetic.invalid.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-006",
+      "source_id": "SRC-04",
+      "entity_id": "ENT-011",
+      "observed_at": "2026-08-06T09:00:00Z",
+      "evidence_type": "tls_scan",
+      "summary": "Public scan of 198.51.100.42 presents TLS certificate CS-4401.",
+      "confidence": 0.85
+    },
+    {
+      "id": "OBS-007",
+      "source_id": "SRC-02",
+      "entity_id": "ENT-002",
+      "observed_at": "2026-08-15T12:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "Handle glove_craft registered on Briar Road following Bramble Bazaar downtime.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-008",
+      "source_id": "SRC-02",
+      "entity_id": "ENT-008",
+      "observed_at": "2026-08-15T12:05:00Z",
+      "evidence_type": "key_listed",
+      "summary": "glove_craft profile lists PGP key FP81.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-009",
+      "source_id": "SRC-02",
+      "entity_id": "ENT-009",
+      "observed_at": "2026-08-15T12:10:00Z",
+      "evidence_type": "wallet_listed",
+      "summary": "glove_craft payout address lists wallet W81.",
+      "confidence": 0.85
+    },
+    {
+      "id": "OBS-010",
+      "source_id": "SRC-02",
+      "entity_id": "ENT-002",
+      "observed_at": "2026-08-18T14:30:00Z",
+      "evidence_type": "writing_style",
+      "summary": "glove_craft posts sign off 'in flora we trust' and write dates as DD-Mon-YYYY.",
+      "confidence": 0.65
+    },
+    {
+      "id": "OBS-011",
+      "source_id": "SRC-03",
+      "entity_id": "ENT-003",
+      "observed_at": "2026-08-25T15:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "Handle fox_botanist registered on Heather Forum.",
+      "confidence": 0.8
+    },
+    {
+      "id": "OBS-012",
+      "source_id": "SRC-03",
+      "entity_id": "ENT-009",
+      "observed_at": "2026-08-25T15:10:00Z",
+      "evidence_type": "wallet_listed",
+      "summary": "fox_botanist direct orders accept wallet W81.",
+      "confidence": 0.85
+    },
+    {
+      "id": "OBS-013",
+      "source_id": "SRC-03",
+      "entity_id": "ENT-003",
+      "observed_at": "2026-08-28T16:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "fox_botanist posts sign off 'in flora we trust' and write dates as DD-Mon-YYYY.",
+      "confidence": 0.65
+    },
+    {
+      "id": "OBS-014",
+      "source_id": "SRC-07",
+      "entity_id": "ENT-004",
+      "observed_at": "2026-08-29T18:00:00Z",
+      "evidence_type": "rumor",
+      "summary": "Unverified forum comment claims foxglove_imposter is run by the original foxglove vendor, but presents no key or proof.",
+      "confidence": 0.3
+    },
+    {
+      "id": "OBS-015",
+      "source_id": "SRC-06",
+      "entity_id": "ENT-012",
+      "observed_at": "2026-09-01T10:00:00Z",
+      "evidence_type": "payment_flow",
+      "summary": "Ledger extract shows briar_buyer_88 deposited funds to shared exchange pooling wallet W88; no funds move directly to vendor; common exchange pooling deposit address.",
+      "confidence": 0.4
+    },
+    {
+      "id": "OBS-016",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-006",
+      "observed_at": "2026-08-10T11:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "belladonna_apothecary uses the rare word 'decoction'.",
+      "confidence": 0.55
+    },
+    {
+      "id": "OBS-017",
+      "source_id": "SRC-02",
+      "entity_id": "ENT-007",
+      "observed_at": "2026-08-12T13:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "nightshade_lab uses the rare word 'decoction'.",
+      "confidence": 0.55
+    },
+    {
+      "id": "OBS-018",
+      "source_id": "SRC-08",
+      "entity_id": "ENT-006",
+      "observed_at": "2026-08-14T10:00:00Z",
+      "evidence_type": "analyst_note",
+      "summary": "belladonna_apothecary and nightshade_lab were active at the same time in mid-August; weak stylistic overlap is inconclusive.",
+      "confidence": 0.4
+    }
+  ],
+  "data_mode": "synthetic"
+}

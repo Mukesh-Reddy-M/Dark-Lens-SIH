@@ -1,0 +1,33 @@
+{
+  "description": "Nightshade — synthetic case testing evidence quality and contradiction analysis. nightshade_lab and belladonna_rx share verified PGP key FP-NIGHT99 and wallet W-NIGHT0000000001 despite duplicate mirror reports. nightshade_lab explicitly posts counter-evidence refuting nightshade_imposter, creating a confirmed contradiction. spore_trader and hemlock_buyer share a weak rare word clue but exhibit concurrent activity.",
+  "synthetic_only": true,
+  "personas": [
+    {
+      "description": "Likely same vendor operator: nightshade_lab and belladonna_rx share PGP key FP-NIGHT99 and wallet",
+      "entities": ["ENT-001", "ENT-002"]
+    }
+  ],
+  "links": [
+    {
+      "id": "NS-L001",
+      "pair": ["ENT-001", "ENT-002"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "nightshade_lab <-> belladonna_rx: shared PGP FP-NIGHT99 and wallet W-NIGHT0000000001"
+    },
+    {
+      "id": "NS-L002",
+      "pair": ["ENT-006", "ENT-007"],
+      "type": "weak",
+      "expected_score": "<=0.45",
+      "note": "spore_trader <-> hemlock_buyer: weak rare word overlap with concurrent activity"
+    },
+    {
+      "id": "NS-D001",
+      "pair": ["ENT-001", "ENT-003"],
+      "type": "decoy",
+      "expected_score": "<0.30",
+      "note": "nightshade_lab <-> nightshade_imposter: confirmed contradiction / unverified impersonation; must not be proposed"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "data_mode": "synthetic",
+  "case": {
+    "title": "Synthetic example investigation",
+    "description": "Illustrative records for testing the DarkLens JSON importer."
+  },
+  "sources": [
+    {
+      "id": "SRC-DEMO-ARCHIVE",
+      "name": "Synthetic archive snapshot",
+      "source_type": "archived_forum_snapshot",
+      "reliability": 0.75
+    }
+  ],
+  "entities": [
+    {
+      "id": "HANDLE-ALPHA",
+      "type": "handle",
+      "display_label": "sample_handle_alpha",
+      "first_seen": "2026-01-12T10:00:00Z",
+      "last_seen": "2026-01-12T10:00:00Z",
+      "attributes": { "marketplace": "Synthetic Market A" }
+    },
+    {
+      "id": "HANDLE-BRAVO",
+      "type": "handle",
+      "display_label": "sample_handle_bravo",
+      "first_seen": "2026-02-08T15:30:00Z",
+      "last_seen": "2026-02-08T15:30:00Z",
+      "attributes": { "marketplace": "Synthetic Market B" }
+    }
+  ],
+  "observations": [
+    {
+      "id": "OBS-DEMO-001",
+      "source_id": "SRC-DEMO-ARCHIVE",
+      "entity_id": "HANDLE-ALPHA",
+      "observed_at": "2026-01-12T10:00:00Z",
+      "evidence_type": "wallet_observed",
+      "summary": "A synthetic listing references a shared demonstration wallet.",
+      "confidence": 0.9,
+      "details": { "wallet": "bc1qsyntheticexample000000000000000000000000" }
+    },
+    {
+      "id": "OBS-DEMO-002",
+      "source_id": "SRC-DEMO-ARCHIVE",
+      "entity_id": "HANDLE-BRAVO",
+      "observed_at": "2026-02-08T15:30:00Z",
+      "evidence_type": "wallet_observed",
+      "summary": "A second synthetic listing references the same demonstration wallet.",
+      "confidence": 0.85,
+      "details": { "wallet": "bc1qsyntheticexample000000000000000000000000" }
+    }
+  ]
+}

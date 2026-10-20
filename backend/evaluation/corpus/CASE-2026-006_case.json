@@ -1,0 +1,325 @@
+{
+  "schema_version": "1.0",
+  "data_mode": "synthetic",
+  "case": {
+    "id": "CASE-2026-006",
+    "title": "Marrowbone",
+    "description": "Fictional case for demonstration: an invented marketplace handle changes hands mid-case (10 Jul - 10 Oct 2026). All names and identifiers are invented."
+  },
+  "sources": [
+    {
+      "id": "SRC-05",
+      "name": "Analyst note",
+      "source_type": "analyst_note",
+      "reliability": 0.5
+    },
+    {
+      "id": "SRC-04",
+      "name": "Forum rumour thread",
+      "source_type": "forum_scrape",
+      "reliability": 0.55
+    },
+    {
+      "id": "SRC-02",
+      "name": "Lamplight archived dump",
+      "source_type": "archived_market_dump",
+      "reliability": 0.85
+    },
+    {
+      "id": "SRC-01",
+      "name": "Orchard Row archived dump",
+      "source_type": "archived_market_dump",
+      "reliability": 0.9
+    },
+    {
+      "id": "SRC-03",
+      "name": "Public ledger extract",
+      "source_type": "blockchain_public",
+      "reliability": 0.9
+    }
+  ],
+  "entities": [
+    {
+      "id": "ENT-003",
+      "type": "handle",
+      "display_label": "ashen_bell (Lamplight)"
+    },
+    {
+      "id": "ENT-002",
+      "type": "handle",
+      "display_label": "bonewhistle (Lamplight)"
+    },
+    {
+      "id": "ENT-001",
+      "type": "handle",
+      "display_label": "marrowbone (Orchard Row)"
+    },
+    {
+      "id": "ENT-004",
+      "type": "handle",
+      "display_label": "salt_candle (Lamplight)"
+    },
+    {
+      "id": "ENT-005",
+      "type": "pgp_key",
+      "display_label": "FP7 5EED 0C07 CE00 0000 0000 0000 0000 0000 5EED 0007"
+    },
+    {
+      "id": "ENT-006",
+      "type": "pgp_key",
+      "display_label": "FP8 5EED 0C08 CE00 0000 0000 0000 0000 0000 5EED 0008"
+    },
+    {
+      "id": "ENT-010",
+      "type": "service",
+      "display_label": "Lamplight (lamplight.synthetic.invalid)"
+    },
+    {
+      "id": "ENT-009",
+      "type": "service",
+      "display_label": "Orchard Row (orchardrow.synthetic.invalid)"
+    },
+    {
+      "id": "ENT-008",
+      "type": "wallet",
+      "display_label": "SYNTH-W10-BELL000000000000010"
+    },
+    {
+      "id": "ENT-007",
+      "type": "wallet",
+      "display_label": "SYNTH-W9-BONE0000000000000009"
+    }
+  ],
+  "observations": [
+    {
+      "id": "OBS-001",
+      "source_id": "SRC-01",
+      "observed_at": "2026-07-10T10:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "marrowbone created on Orchard Row.",
+      "confidence": 0.9,
+      "entity_id": "ENT-001"
+    },
+    {
+      "id": "OBS-002",
+      "source_id": "SRC-01",
+      "observed_at": "2026-07-10T10:02:00Z",
+      "evidence_type": "key_listed",
+      "summary": "marrowbone profile lists PGP-style key FP7.",
+      "confidence": 0.9,
+      "entity_id": "ENT-005",
+      "details": {
+        "actor_entity_id": "ENT-001",
+        "key": "ENT-005"
+      }
+    },
+    {
+      "id": "OBS-003",
+      "source_id": "SRC-01",
+      "observed_at": "2026-07-14T10:00:00Z",
+      "evidence_type": "wallet_listed",
+      "summary": "marrowbone payment instructions use wallet W9.",
+      "confidence": 0.9,
+      "entity_id": "ENT-007",
+      "details": {
+        "actor_entity_id": "ENT-001",
+        "wallet": "ENT-007"
+      }
+    },
+    {
+      "id": "OBS-004",
+      "source_id": "SRC-02",
+      "observed_at": "2026-07-20T10:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "bonewhistle created on Lamplight.",
+      "confidence": 0.85,
+      "entity_id": "ENT-002"
+    },
+    {
+      "id": "OBS-005",
+      "source_id": "SRC-02",
+      "observed_at": "2026-07-20T10:05:00Z",
+      "evidence_type": "key_listed",
+      "summary": "bonewhistle profile lists PGP-style key FP7.",
+      "confidence": 0.85,
+      "entity_id": "ENT-005",
+      "details": {
+        "actor_entity_id": "ENT-002",
+        "key": "ENT-005"
+      }
+    },
+    {
+      "id": "OBS-006",
+      "source_id": "SRC-02",
+      "observed_at": "2026-07-22T10:00:00Z",
+      "evidence_type": "wallet_listed",
+      "summary": "bonewhistle payment instructions use wallet W9.",
+      "confidence": 0.85,
+      "entity_id": "ENT-007",
+      "details": {
+        "actor_entity_id": "ENT-002",
+        "wallet": "ENT-007"
+      }
+    },
+    {
+      "id": "OBS-007",
+      "source_id": "SRC-01",
+      "observed_at": "2026-08-05T10:00:00Z",
+      "evidence_type": "reputation",
+      "summary": "marrowbone holds 212 positive reviews on Orchard Row.",
+      "confidence": 0.8,
+      "entity_id": "ENT-001"
+    },
+    {
+      "id": "OBS-008",
+      "source_id": "SRC-01",
+      "observed_at": "2026-08-20T10:00:00Z",
+      "evidence_type": "account_activity",
+      "summary": "marrowbone posts 'handing over the shop' and stops posting.",
+      "confidence": 0.9,
+      "entity_id": "ENT-001"
+    },
+    {
+      "id": "OBS-009",
+      "source_id": "SRC-04",
+      "observed_at": "2026-08-22T10:00:00Z",
+      "evidence_type": "handle_transfer",
+      "summary": "Forum rumour: the marrowbone account was sold to a new owner.",
+      "confidence": 0.4,
+      "entity_id": "ENT-001"
+    },
+    {
+      "id": "OBS-010",
+      "source_id": "SRC-01",
+      "observed_at": "2026-08-25T10:00:00Z",
+      "evidence_type": "key_changed",
+      "summary": "marrowbone profile now lists PGP-style key FP8, replacing FP7.",
+      "confidence": 0.9,
+      "entity_id": "ENT-006",
+      "details": {
+        "actor_entity_id": "ENT-001",
+        "key": "ENT-006"
+      }
+    },
+    {
+      "id": "OBS-011",
+      "source_id": "SRC-01",
+      "observed_at": "2026-08-25T10:03:00Z",
+      "evidence_type": "wallet_listed",
+      "summary": "marrowbone payment instructions now use wallet W10.",
+      "confidence": 0.9,
+      "entity_id": "ENT-008",
+      "details": {
+        "actor_entity_id": "ENT-001",
+        "wallet": "ENT-008"
+      }
+    },
+    {
+      "id": "OBS-012",
+      "source_id": "SRC-01",
+      "observed_at": "2026-08-26T10:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "marrowbone's sign-off changes from 'steady hands' to 'be well'.",
+      "confidence": 0.7,
+      "entity_id": "ENT-001"
+    },
+    {
+      "id": "OBS-013",
+      "source_id": "SRC-02",
+      "observed_at": "2026-08-29T10:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "ashen_bell created on Lamplight.",
+      "confidence": 0.85,
+      "entity_id": "ENT-003"
+    },
+    {
+      "id": "OBS-014",
+      "source_id": "SRC-02",
+      "observed_at": "2026-08-29T10:05:00Z",
+      "evidence_type": "key_listed",
+      "summary": "ashen_bell profile lists PGP-style key FP8.",
+      "confidence": 0.85,
+      "entity_id": "ENT-006",
+      "details": {
+        "actor_entity_id": "ENT-003",
+        "key": "ENT-006"
+      }
+    },
+    {
+      "id": "OBS-015",
+      "source_id": "SRC-02",
+      "observed_at": "2026-09-02T10:00:00Z",
+      "evidence_type": "wallet_listed",
+      "summary": "ashen_bell payment instructions use wallet W10.",
+      "confidence": 0.85,
+      "entity_id": "ENT-008",
+      "details": {
+        "actor_entity_id": "ENT-003",
+        "wallet": "ENT-008"
+      }
+    },
+    {
+      "id": "OBS-016",
+      "source_id": "SRC-02",
+      "observed_at": "2026-09-04T10:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "ashen_bell signs off 'be well'.",
+      "confidence": 0.65,
+      "entity_id": "ENT-003"
+    },
+    {
+      "id": "OBS-017",
+      "source_id": "SRC-02",
+      "observed_at": "2026-09-10T10:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "salt_candle created on Lamplight; no key listed.",
+      "confidence": 0.6,
+      "entity_id": "ENT-004"
+    },
+    {
+      "id": "OBS-018",
+      "source_id": "SRC-02",
+      "observed_at": "2026-09-12T21:00:00Z",
+      "evidence_type": "posting_pattern",
+      "summary": "salt_candle posts mostly at 20:00-22:00 UTC on weekends.",
+      "confidence": 0.45,
+      "entity_id": "ENT-004"
+    },
+    {
+      "id": "OBS-019",
+      "source_id": "SRC-02",
+      "observed_at": "2026-09-14T21:00:00Z",
+      "evidence_type": "posting_pattern",
+      "summary": "ashen_bell posts mostly at 20:00-22:00 UTC on weekends.",
+      "confidence": 0.45,
+      "entity_id": "ENT-003"
+    },
+    {
+      "id": "OBS-020",
+      "source_id": "SRC-05",
+      "observed_at": "2026-09-18T12:00:00Z",
+      "evidence_type": "analyst_note",
+      "summary": "salt_candle and ashen_bell share a weekend evening rhythm only. Needs more evidence.",
+      "confidence": 0.4,
+      "entity_id": "ENT-004"
+    },
+    {
+      "id": "OBS-021",
+      "source_id": "SRC-03",
+      "observed_at": "2026-09-25T10:00:00Z",
+      "evidence_type": "payment_flow",
+      "summary": "Ledger: W9 has been inactive since 20 Aug and no funds move from W9 to W10.",
+      "confidence": 0.8,
+      "entity_id": "ENT-007"
+    },
+    {
+      "id": "OBS-022",
+      "source_id": "SRC-05",
+      "observed_at": "2026-10-02T10:00:00Z",
+      "evidence_type": "analyst_note",
+      "summary": "The handle marrowbone covers two different operators; a shared handle is not shared identity.",
+      "confidence": 0.6,
+      "entity_id": "ENT-001"
+    }
+  ]
+}

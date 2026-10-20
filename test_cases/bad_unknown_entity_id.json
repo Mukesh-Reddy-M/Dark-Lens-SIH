@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "data_mode": "synthetic",
+  "case": {
+    "title": "Unknown Entity Reference Test",
+    "description": "Observation references non-existent entity"
+  },
+  "sources": [
+    {
+      "id": "SRC-001",
+      "name": "Archive",
+      "source_type": "snapshot",
+      "reliability": 0.8
+    }
+  ],
+  "entities": [
+    {
+      "id": "ENT-001",
+      "type": "handle",
+      "display_label": "known_actor"
+    }
+  ],
+  "observations": [
+    {
+      "id": "OBS-001",
+      "source_id": "SRC-001",
+      "entity_id": "UNKNOWN-ENTITY-999",
+      "observed_at": "2026-01-01T00:00:00Z",
+      "evidence_type": "post",
+      "summary": "Sample post referencing unknown entity",
+      "confidence": 0.9,
+      "details": {}
+    }
+  ]
+}

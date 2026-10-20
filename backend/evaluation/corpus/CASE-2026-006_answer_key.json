@@ -1,0 +1,37 @@
+{
+  "description": "Marrowbone — an invented marketplace handle changes hands mid-case (Orchard Row → Lamplight). The original marrowbone handle (ENT-001) shares PGP key FP7 with bonewhistle (ENT-002) and ashen_bell (ENT-003). A posting-pattern overlap between ashen_bell and salt_candle is a weak decoy.",
+  "synthetic_only": true,
+  "personas": [
+    {
+      "description": "bonewhistle reuses marrowbone key",
+      "entities": ["ENT-001", "ENT-002"]
+    },
+    {
+      "description": "ashen_bell reuses marrowbone key after handle change",
+      "entities": ["ENT-001", "ENT-003"]
+    }
+  ],
+  "links": [
+    {
+      "id": "MB-L001",
+      "pair": ["ENT-001", "ENT-002"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "marrowbone <-> bonewhistle: shared PGP-style key"
+    },
+    {
+      "id": "MB-L002",
+      "pair": ["ENT-001", "ENT-003"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "marrowbone <-> ashen_bell: shared PGP-style key"
+    },
+    {
+      "id": "MB-D001",
+      "pair": ["ENT-003", "ENT-004"],
+      "type": "decoy",
+      "expected_score": "<0.50",
+      "note": "ashen_bell <-> salt_candle: posting-pattern overlap only; weak decoy"
+    }
+  ]
+}

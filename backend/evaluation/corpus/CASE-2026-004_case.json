@@ -1,0 +1,299 @@
+{
+  "schema_version": "1.0",
+  "data_mode": "synthetic",
+  "case": {
+    "id": "CASE-2026-004",
+    "title": "Copperline",
+    "description": "Fictional case for demonstration: vendors of counterfeit event passes move funds through invented wallet-shaped identifiers (5 Jul - 1 Oct 2026). All names and identifiers are invented."
+  },
+  "sources": [
+    {
+      "id": "SRC-04",
+      "name": "Analyst note",
+      "source_type": "analyst_note",
+      "reliability": 0.5
+    },
+    {
+      "id": "SRC-02",
+      "name": "Ashlar archived dump",
+      "source_type": "archived_market_dump",
+      "reliability": 0.85
+    },
+    {
+      "id": "SRC-03",
+      "name": "Public ledger extract",
+      "source_type": "blockchain_public",
+      "reliability": 0.9
+    },
+    {
+      "id": "SRC-01",
+      "name": "Vellum archived dump",
+      "source_type": "archived_market_dump",
+      "reliability": 0.9
+    }
+  ],
+  "entities": [
+    {
+      "id": "ENT-002",
+      "type": "handle",
+      "display_label": "copperwire (Ashlar)"
+    },
+    {
+      "id": "ENT-001",
+      "type": "handle",
+      "display_label": "ironbark (Vellum)"
+    },
+    {
+      "id": "ENT-004",
+      "type": "handle",
+      "display_label": "lathe9 (Ashlar)"
+    },
+    {
+      "id": "ENT-003",
+      "type": "handle",
+      "display_label": "tin_whistle (Vellum)"
+    },
+    {
+      "id": "ENT-011",
+      "type": "service",
+      "display_label": "Ashlar (ashlar.synthetic.invalid)"
+    },
+    {
+      "id": "ENT-010",
+      "type": "service",
+      "display_label": "Vellum (vellum.synthetic.invalid)"
+    },
+    {
+      "id": "ENT-009",
+      "type": "wallet",
+      "display_label": "SYNTH-EXCH-HOT-000000000002"
+    },
+    {
+      "id": "ENT-005",
+      "type": "wallet",
+      "display_label": "SYNTH-W5-IRON000000000000005"
+    },
+    {
+      "id": "ENT-006",
+      "type": "wallet",
+      "display_label": "SYNTH-W6-COPPER00000000000006"
+    },
+    {
+      "id": "ENT-007",
+      "type": "wallet",
+      "display_label": "SYNTH-W7-WHISTLE0000000000007"
+    },
+    {
+      "id": "ENT-008",
+      "type": "wallet",
+      "display_label": "SYNTH-W8-LATHE000000000000008"
+    }
+  ],
+  "observations": [
+    {
+      "id": "OBS-001",
+      "source_id": "SRC-01",
+      "observed_at": "2026-07-05T09:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "ironbark created on Vellum.",
+      "confidence": 0.9,
+      "entity_id": "ENT-001"
+    },
+    {
+      "id": "OBS-002",
+      "source_id": "SRC-01",
+      "observed_at": "2026-07-06T09:10:00Z",
+      "evidence_type": "wallet_listed",
+      "summary": "ironbark payment instructions use wallet W5.",
+      "confidence": 0.9,
+      "entity_id": "ENT-005",
+      "details": {
+        "actor_entity_id": "ENT-001",
+        "wallet": "ENT-005"
+      }
+    },
+    {
+      "id": "OBS-003",
+      "source_id": "SRC-02",
+      "observed_at": "2026-07-12T09:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "copperwire created on Ashlar.",
+      "confidence": 0.85,
+      "entity_id": "ENT-002"
+    },
+    {
+      "id": "OBS-004",
+      "source_id": "SRC-02",
+      "observed_at": "2026-07-13T09:10:00Z",
+      "evidence_type": "wallet_listed",
+      "summary": "copperwire payment instructions use wallet W6.",
+      "confidence": 0.85,
+      "entity_id": "ENT-006",
+      "details": {
+        "actor_entity_id": "ENT-002",
+        "wallet": "ENT-006"
+      }
+    },
+    {
+      "id": "OBS-005",
+      "source_id": "SRC-01",
+      "observed_at": "2026-07-20T09:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "tin_whistle created on Vellum.",
+      "confidence": 0.9,
+      "entity_id": "ENT-003"
+    },
+    {
+      "id": "OBS-006",
+      "source_id": "SRC-01",
+      "observed_at": "2026-07-21T09:10:00Z",
+      "evidence_type": "wallet_listed",
+      "summary": "tin_whistle payment instructions use wallet W7.",
+      "confidence": 0.9,
+      "entity_id": "ENT-007",
+      "details": {
+        "actor_entity_id": "ENT-003",
+        "wallet": "ENT-007"
+      }
+    },
+    {
+      "id": "OBS-007",
+      "source_id": "SRC-02",
+      "observed_at": "2026-07-30T09:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "lathe9 created on Ashlar.",
+      "confidence": 0.85,
+      "entity_id": "ENT-004"
+    },
+    {
+      "id": "OBS-008",
+      "source_id": "SRC-02",
+      "observed_at": "2026-07-31T09:10:00Z",
+      "evidence_type": "wallet_listed",
+      "summary": "lathe9 payment instructions use wallet W8.",
+      "confidence": 0.85,
+      "entity_id": "ENT-008",
+      "details": {
+        "actor_entity_id": "ENT-004",
+        "wallet": "ENT-008"
+      }
+    },
+    {
+      "id": "OBS-009",
+      "source_id": "SRC-03",
+      "observed_at": "2026-08-09T16:20:00Z",
+      "evidence_type": "payment_flow",
+      "summary": "Ledger: one transaction spends W5 and W6 together as inputs, with change sent to a new address.",
+      "confidence": 0.9,
+      "entity_id": "ENT-005"
+    },
+    {
+      "id": "OBS-010",
+      "source_id": "SRC-03",
+      "observed_at": "2026-08-09T16:21:00Z",
+      "evidence_type": "payment_flow",
+      "summary": "Same transaction: W6 appears as a co-input alongside W5.",
+      "confidence": 0.9,
+      "entity_id": "ENT-006"
+    },
+    {
+      "id": "OBS-011",
+      "source_id": "SRC-03",
+      "observed_at": "2026-08-23T16:05:00Z",
+      "evidence_type": "payment_flow",
+      "summary": "Ledger: a second transaction again spends W5 and W6 together as inputs.",
+      "confidence": 0.9,
+      "entity_id": "ENT-005"
+    },
+    {
+      "id": "OBS-012",
+      "source_id": "SRC-03",
+      "observed_at": "2026-08-26T13:00:00Z",
+      "evidence_type": "payment_flow",
+      "summary": "Ledger: W5 sends a single purchase-sized payment to W7.",
+      "confidence": 0.8,
+      "entity_id": "ENT-007"
+    },
+    {
+      "id": "OBS-013",
+      "source_id": "SRC-03",
+      "observed_at": "2026-09-02T10:00:00Z",
+      "evidence_type": "payment_flow",
+      "summary": "Ledger: W5 and W7 both send payouts to a shared exchange hot wallet used by many accounts.",
+      "confidence": 0.4,
+      "entity_id": "ENT-009"
+    },
+    {
+      "id": "OBS-014",
+      "source_id": "SRC-03",
+      "observed_at": "2026-09-06T18:10:00Z",
+      "evidence_type": "payment_flow",
+      "summary": "Ledger: W8 withdraws to the exchange hot wallet most Fridays around 18:00 UTC.",
+      "confidence": 0.6,
+      "entity_id": "ENT-008"
+    },
+    {
+      "id": "OBS-015",
+      "source_id": "SRC-03",
+      "observed_at": "2026-09-08T18:05:00Z",
+      "evidence_type": "payment_flow",
+      "summary": "Ledger: W6 withdraws to the exchange hot wallet most Fridays around 18:00 UTC.",
+      "confidence": 0.6,
+      "entity_id": "ENT-006"
+    },
+    {
+      "id": "OBS-016",
+      "source_id": "SRC-02",
+      "observed_at": "2026-09-12T10:00:00Z",
+      "evidence_type": "posting_pattern",
+      "summary": "lathe9 posts weekly, on Fridays.",
+      "confidence": 0.5,
+      "entity_id": "ENT-004"
+    },
+    {
+      "id": "OBS-017",
+      "source_id": "SRC-02",
+      "observed_at": "2026-09-14T10:00:00Z",
+      "evidence_type": "posting_pattern",
+      "summary": "copperwire posts weekly, on Fridays.",
+      "confidence": 0.5,
+      "entity_id": "ENT-002"
+    },
+    {
+      "id": "OBS-018",
+      "source_id": "SRC-04",
+      "observed_at": "2026-09-18T12:00:00Z",
+      "evidence_type": "analyst_note",
+      "summary": "lathe9 and copperwire share a Friday rhythm but no wallet link or co-spend; weekly cycles are common. Needs more evidence.",
+      "confidence": 0.4,
+      "entity_id": "ENT-004"
+    },
+    {
+      "id": "OBS-019",
+      "source_id": "SRC-03",
+      "observed_at": "2026-09-24T10:00:00Z",
+      "evidence_type": "payment_flow",
+      "summary": "W7 receives payments from five unrelated wallets, which looks like a shop wallet paid by buyers.",
+      "confidence": 0.7,
+      "entity_id": "ENT-007"
+    },
+    {
+      "id": "OBS-020",
+      "source_id": "SRC-02",
+      "observed_at": "2026-10-01T11:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "copperwire listings reuse the phrase 'forged in good faith'.",
+      "confidence": 0.6,
+      "entity_id": "ENT-002"
+    },
+    {
+      "id": "OBS-021",
+      "source_id": "SRC-01",
+      "observed_at": "2026-10-02T11:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "ironbark listings reuse the phrase 'forged in good faith'.",
+      "confidence": 0.6,
+      "entity_id": "ENT-001"
+    }
+  ]
+}

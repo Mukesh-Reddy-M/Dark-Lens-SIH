@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "data_mode": "synthetic",
+  "case": {
+    "title": "Invalid Reliability Test",
+    "description": "Source reliability exceeds 1.0"
+  },
+  "sources": [
+    {
+      "id": "SRC-001",
+      "name": "Archive",
+      "source_type": "snapshot",
+      "reliability": 1.5
+    }
+  ],
+  "entities": [
+    {
+      "id": "ENT-001",
+      "type": "handle",
+      "display_label": "bad_actor"
+    }
+  ],
+  "observations": [
+    {
+      "id": "OBS-001",
+      "source_id": "SRC-001",
+      "entity_id": "ENT-001",
+      "observed_at": "2026-01-01T00:00:00Z",
+      "evidence_type": "post",
+      "summary": "Sample post",
+      "confidence": 0.9,
+      "details": {}
+    }
+  ]
+}

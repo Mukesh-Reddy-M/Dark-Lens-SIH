@@ -1,0 +1,61 @@
+{
+  "description": "Foxglove — synthetic vendor of botanical extracts migrates across three simulated marketplaces (Bramble Bazaar, Briar Road, Heather Forum). foxglove_vendor, glove_craft, and fox_botanist share PGP key FP81, wallet W81, and sign-off habits. Bramble Bazaar shares certificate CS-4401 with host 198.51.100.42. foxglove_imposter is an unverified forum rumor decoy, briar_buyer_88 is a shared exchange pooling decoy, and belladonna_apothecary / nightshade_lab share weak writing habits with concurrent activity.",
+  "synthetic_only": true,
+  "personas": [
+    {
+      "description": "Likely same operator across migrations: foxglove_vendor, glove_craft, and fox_botanist",
+      "entities": ["ENT-001", "ENT-002", "ENT-003"]
+    }
+  ],
+  "links": [
+    {
+      "id": "FG-L001",
+      "pair": ["ENT-001", "ENT-002"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "foxglove_vendor (Bramble) <-> glove_craft (Briar): shared PGP FP81, wallet W81, and sign-off style"
+    },
+    {
+      "id": "FG-L002",
+      "pair": ["ENT-010", "ENT-011"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "Bramble Bazaar <-> 198.51.100.42: matching certificate serial CS-4401"
+    },
+    {
+      "id": "FG-L003",
+      "pair": ["ENT-001", "ENT-003"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "foxglove_vendor (Bramble) <-> fox_botanist (Heather): shared wallet W81 and sign-off style"
+    },
+    {
+      "id": "FG-L004",
+      "pair": ["ENT-002", "ENT-003"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "glove_craft (Briar) <-> fox_botanist (Heather): shared wallet W81 and sign-off style"
+    },
+    {
+      "id": "FG-L005",
+      "pair": ["ENT-006", "ENT-007"],
+      "type": "weak",
+      "expected_score": "<=0.45",
+      "note": "belladonna_apothecary <-> nightshade_lab: weak reported word overlap, concurrent activity"
+    },
+    {
+      "id": "FG-D001",
+      "pair": ["ENT-001", "ENT-004"],
+      "type": "decoy",
+      "expected_score": "<0.30",
+      "note": "foxglove_vendor <-> foxglove_imposter: unverified forum rumor decoy; must not be proposed"
+    },
+    {
+      "id": "FG-D002",
+      "pair": ["ENT-002", "ENT-005"],
+      "type": "decoy",
+      "expected_score": "<0.30",
+      "note": "glove_craft <-> briar_buyer_88: shared exchange pooling decoy; must stay suppressed"
+    }
+  ]
+}

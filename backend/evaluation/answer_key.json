@@ -1,0 +1,13 @@
+{
+  "case_id": "NIGHTJAR-2026-001",
+  "synthetic_only": true,
+  "links": [
+    {"id":"L1","from":"handle-mothlight","to":"handle-m0thl1ght","expected":"strong","minimum_score":0.85,"evidence_ids":["obs-01","obs-02","obs-03","obs-10","obs-11","obs-12"]},
+    {"id":"L2","from":"service-lantern","to":"host-lantern","expected":"strong","minimum_score":0.85,"evidence_ids":["obs-06","obs-07"]},
+    {"id":"L3","from":"handle-pale-heron","to":"actor-a","expected":"weak","maximum_score":0.45,"required_status":"needs_more_evidence","evidence_ids":["obs-02","obs-12","obs-17","obs-18","obs-19","obs-20","obs-21","obs-24"]},
+    {"id":"D1","from":"handle-cold-finch","to":"handle-coldfinch","expected":"decoy","maximum_score":0.30,"must_not_be_accepted":true},
+    {"id":"D2","from":"handle-ashwren","to":"handle-mothlight","expected":"decoy","maximum_score":0.30,"must_not_be_accepted":true},
+    {"id":"D3","from":"service-paperwasp","to":"service-gravel","expected":"decoy","maximum_score":0.30,"must_not_be_accepted":true}
+  ],
+  "global_expectations": ["actor-b remains separate from actor-a", "no link is automatically accepted", "answer key is never loaded by the app or API"]
+}

@@ -1,0 +1,285 @@
+{
+  "schema_version": "1.0",
+  "case": {
+    "id": "HOLDOUT-2026-003",
+    "title": "Osprey",
+    "description": "Synthetic holdout case: an invented broker of telemetry and credential dumps operates across three leak boards (Talon Bazaar, Cormorant Exchange, Gull Forum). Features shared PGP keys, wallets, multilingual writing quirks, an SSL certificate link, an unverified copycat rumor decoy, a financial pooling decoy, and a weak vocabulary-overlap lead."
+  },
+  "sources": [
+    {
+      "id": "SRC-01",
+      "name": "Talon Bazaar dump archive",
+      "source_type": "archived_market_dump",
+      "reliability": 0.9
+    },
+    {
+      "id": "SRC-02",
+      "name": "Cormorant Exchange dump archive",
+      "source_type": "archived_market_dump",
+      "reliability": 0.85
+    },
+    {
+      "id": "SRC-03",
+      "name": "Gull Forum public scrape",
+      "source_type": "forum_scrape",
+      "reliability": 0.85
+    },
+    {
+      "id": "SRC-04",
+      "name": "Public TLS scan snapshot",
+      "source_type": "public_scan",
+      "reliability": 0.85
+    },
+    {
+      "id": "SRC-05",
+      "name": "Certificate transparency log",
+      "source_type": "ct_log",
+      "reliability": 0.9
+    },
+    {
+      "id": "SRC-06",
+      "name": "Public ledger extract",
+      "source_type": "blockchain_public",
+      "reliability": 0.85
+    },
+    {
+      "id": "SRC-07",
+      "name": "Gull Forum rumor board",
+      "source_type": "forum_scrape",
+      "reliability": 0.35
+    },
+    {
+      "id": "SRC-08",
+      "name": "Analyst synthesis note",
+      "source_type": "analyst_note",
+      "reliability": 0.5
+    }
+  ],
+  "entities": [
+    {
+      "id": "ENT-001",
+      "type": "handle",
+      "display_label": "osprey_intel (Talon Bazaar)"
+    },
+    {
+      "id": "ENT-002",
+      "type": "handle",
+      "display_label": "sea_hawk_data (Cormorant Exchange)"
+    },
+    {
+      "id": "ENT-003",
+      "type": "handle",
+      "display_label": "pandion_leaks (Gull Forum)"
+    },
+    {
+      "id": "ENT-004",
+      "type": "handle",
+      "display_label": "osprey_fan (Gull Forum)"
+    },
+    {
+      "id": "ENT-005",
+      "type": "handle",
+      "display_label": "harbor_relay (Cormorant Exchange)"
+    },
+    {
+      "id": "ENT-006",
+      "type": "handle",
+      "display_label": "gull_watcher (Talon Bazaar)"
+    },
+    {
+      "id": "ENT-007",
+      "type": "handle",
+      "display_label": "cormorant_scout (Cormorant Exchange)"
+    },
+    {
+      "id": "ENT-008",
+      "type": "pgp_key",
+      "display_label": "FP73 9988 7766 5544 3322 1100 AABB CCDD EEFF 0073"
+    },
+    {
+      "id": "ENT-009",
+      "type": "wallet",
+      "display_label": "SYNTH-W73-OSPREY0000000003"
+    },
+    {
+      "id": "ENT-010",
+      "type": "service",
+      "display_label": "Talon Bazaar (talonbazaar.synthetic.invalid)"
+    },
+    {
+      "id": "ENT-011",
+      "type": "infrastructure",
+      "display_label": "198.51.100.63 (cert CS-7711)"
+    },
+    {
+      "id": "ENT-012",
+      "type": "wallet",
+      "display_label": "SYNTH-EXCH-POOL-730000000003"
+    }
+  ],
+  "observations": [
+    {
+      "id": "OBS-001",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-001",
+      "observed_at": "2026-05-01T10:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "Handle osprey_intel registered on Talon Bazaar.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-002",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-008",
+      "observed_at": "2026-05-01T10:05:00Z",
+      "evidence_type": "key_listed",
+      "summary": "osprey_intel profile lists PGP key FP73.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-003",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-009",
+      "observed_at": "2026-05-01T10:10:00Z",
+      "evidence_type": "wallet_listed",
+      "summary": "osprey_intel payment details list wallet W73.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-004",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-001",
+      "observed_at": "2026-05-03T11:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "osprey_intel posts sign off 'from sky to sea' and mix english with french words.",
+      "confidence": 0.65
+    },
+    {
+      "id": "OBS-005",
+      "source_id": "SRC-05",
+      "entity_id": "ENT-010",
+      "observed_at": "2026-05-05T08:00:00Z",
+      "evidence_type": "certificate_issuance",
+      "summary": "Certificate transparency log lists CS-7711 issued to talonbazaar.synthetic.invalid.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-006",
+      "source_id": "SRC-04",
+      "entity_id": "ENT-011",
+      "observed_at": "2026-05-06T09:00:00Z",
+      "evidence_type": "tls_scan",
+      "summary": "Public scan of 198.51.100.63 presents TLS certificate CS-7711.",
+      "confidence": 0.85
+    },
+    {
+      "id": "OBS-007",
+      "source_id": "SRC-02",
+      "entity_id": "ENT-002",
+      "observed_at": "2026-05-15T12:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "Handle sea_hawk_data created on Cormorant Exchange.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-008",
+      "source_id": "SRC-02",
+      "entity_id": "ENT-008",
+      "observed_at": "2026-05-15T12:05:00Z",
+      "evidence_type": "key_listed",
+      "summary": "sea_hawk_data profile lists PGP key FP73.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-009",
+      "source_id": "SRC-02",
+      "entity_id": "ENT-009",
+      "observed_at": "2026-05-15T12:10:00Z",
+      "evidence_type": "wallet_listed",
+      "summary": "sea_hawk_data listings accept wallet W73.",
+      "confidence": 0.85
+    },
+    {
+      "id": "OBS-010",
+      "source_id": "SRC-02",
+      "entity_id": "ENT-002",
+      "observed_at": "2026-05-17T14:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "sea_hawk_data posts sign off 'from sky to sea' and mix english with french words.",
+      "confidence": 0.65
+    },
+    {
+      "id": "OBS-011",
+      "source_id": "SRC-03",
+      "entity_id": "ENT-003",
+      "observed_at": "2026-05-25T15:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "Handle pandion_leaks registered on Gull Forum.",
+      "confidence": 0.8
+    },
+    {
+      "id": "OBS-012",
+      "source_id": "SRC-03",
+      "entity_id": "ENT-009",
+      "observed_at": "2026-05-25T15:10:00Z",
+      "evidence_type": "wallet_listed",
+      "summary": "pandion_leaks donations point to wallet W73.",
+      "confidence": 0.85
+    },
+    {
+      "id": "OBS-013",
+      "source_id": "SRC-03",
+      "entity_id": "ENT-003",
+      "observed_at": "2026-05-28T16:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "pandion_leaks posts sign off 'from sky to sea' and mix english with french words.",
+      "confidence": 0.65
+    },
+    {
+      "id": "OBS-014",
+      "source_id": "SRC-07",
+      "entity_id": "ENT-004",
+      "observed_at": "2026-05-29T18:00:00Z",
+      "evidence_type": "rumor",
+      "summary": "Unverified forum comment claims osprey_fan is the primary operator account for the leak collective, without key verification.",
+      "confidence": 0.3
+    },
+    {
+      "id": "OBS-015",
+      "source_id": "SRC-06",
+      "entity_id": "ENT-012",
+      "observed_at": "2026-06-01T10:00:00Z",
+      "evidence_type": "payment_flow",
+      "summary": "Ledger extract records harbor_relay deposited funds to shared exchange pooling wallet W73000; no funds move directly to vendor; common exchange pooling deposit address.",
+      "confidence": 0.4
+    },
+    {
+      "id": "OBS-016",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-006",
+      "observed_at": "2026-05-10T11:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "gull_watcher uses the rare word 'pelagic'.",
+      "confidence": 0.55
+    },
+    {
+      "id": "OBS-017",
+      "source_id": "SRC-02",
+      "entity_id": "ENT-007",
+      "observed_at": "2026-05-12T13:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "cormorant_scout uses the rare word 'pelagic'.",
+      "confidence": 0.55
+    },
+    {
+      "id": "OBS-018",
+      "source_id": "SRC-08",
+      "entity_id": "ENT-006",
+      "observed_at": "2026-05-14T10:00:00Z",
+      "evidence_type": "analyst_note",
+      "summary": "gull_watcher and cormorant_scout posted concurrently across both boards throughout May 2026; weak style similarity is inconclusive.",
+      "confidence": 0.4
+    }
+  ],
+  "data_mode": "synthetic"
+}

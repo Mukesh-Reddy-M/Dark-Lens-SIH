@@ -1,0 +1,40 @@
+{
+  "description": "Driftwood — vendor of fake course certificates across three invented marketplaces (Tidepool, Rooklane, Saltgrass). The same PGP-style key links wavecutter and wave_cutter_; writing-style markers (language mix) link wavecutter/wave_cutter_ to reef_ghost at review strength; lookalike handles and shared-boilerplate observations are decoys.",
+  "synthetic_only": true,
+  "personas": [
+    {
+      "description": "Likely same operator: wavecutter (Tidepool) and wave_cutter_ (Rooklane) share a key",
+      "entities": ["ENT-001", "ENT-002"]
+    }
+  ],
+  "links": [
+    {
+      "id": "DW-L001",
+      "pair": ["ENT-001", "ENT-002"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "wavecutter (Tidepool) <-> wave_cutter_ (Rooklane): shared PGP-style key"
+    },
+    {
+      "id": "DW-L002",
+      "pair": ["ENT-001", "ENT-003"],
+      "type": "weak",
+      "expected_score": "<=0.45",
+      "note": "wavecutter <-> reef_ghost: language-mix style overlap only; review-strength cap"
+    },
+    {
+      "id": "DW-L003",
+      "pair": ["ENT-002", "ENT-003"],
+      "type": "weak",
+      "expected_score": "<=0.45",
+      "note": "wave_cutter_ <-> reef_ghost: same style-overlap lead as above"
+    },
+    {
+      "id": "DW-D001",
+      "pair": ["ENT-004", "ENT-005"],
+      "type": "decoy",
+      "expected_score": "<0.30",
+      "note": "plainsong <-> wavecutter_mirror: activity pattern only; should stay weak or absent"
+    }
+  ]
+}

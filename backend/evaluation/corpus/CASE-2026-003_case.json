@@ -1,0 +1,305 @@
+{
+  "schema_version": "1.0",
+  "data_mode": "synthetic",
+  "case": {
+    "id": "CASE-2026-003",
+    "title": "Driftwood",
+    "description": "Fictional case for demonstration: a vendor of fake course certificates posts in mixed-language text across three invented marketplaces (2 Aug - 10 Oct 2026). All names and identifiers are invented."
+  },
+  "sources": [
+    {
+      "id": "SRC-05",
+      "name": "Analyst note",
+      "source_type": "analyst_note",
+      "reliability": 0.5
+    },
+    {
+      "id": "SRC-04",
+      "name": "Public research corpus check",
+      "source_type": "public_research_corpus",
+      "reliability": 0.7
+    },
+    {
+      "id": "SRC-02",
+      "name": "Rooklane archived dump",
+      "source_type": "archived_market_dump",
+      "reliability": 0.85
+    },
+    {
+      "id": "SRC-03",
+      "name": "Saltgrass forum scrape",
+      "source_type": "forum_scrape",
+      "reliability": 0.6
+    },
+    {
+      "id": "SRC-01",
+      "name": "Tidepool archived dump",
+      "source_type": "archived_market_dump",
+      "reliability": 0.9
+    }
+  ],
+  "entities": [
+    {
+      "id": "ENT-004",
+      "type": "handle",
+      "display_label": "plainsong (Tidepool)"
+    },
+    {
+      "id": "ENT-003",
+      "type": "handle",
+      "display_label": "reef_ghost (Saltgrass)"
+    },
+    {
+      "id": "ENT-002",
+      "type": "handle",
+      "display_label": "wave_cutter_ (Rooklane)"
+    },
+    {
+      "id": "ENT-001",
+      "type": "handle",
+      "display_label": "wavecutter (Tidepool)"
+    },
+    {
+      "id": "ENT-005",
+      "type": "handle",
+      "display_label": "wavecutter_mirror (Saltgrass)"
+    },
+    {
+      "id": "ENT-006",
+      "type": "pgp_key",
+      "display_label": "FP5 5EED 0C05 CE00 0000 0000 0000 0000 0000 5EED 0005"
+    },
+    {
+      "id": "ENT-007",
+      "type": "pgp_key",
+      "display_label": "FP6 5EED 0C06 CE00 0000 0000 0000 0000 0000 5EED 0006"
+    },
+    {
+      "id": "ENT-009",
+      "type": "service",
+      "display_label": "Rooklane (rooklane.synthetic.invalid)"
+    },
+    {
+      "id": "ENT-010",
+      "type": "service",
+      "display_label": "Saltgrass (saltgrass.synthetic.invalid)"
+    },
+    {
+      "id": "ENT-008",
+      "type": "service",
+      "display_label": "Tidepool (tidepool.synthetic.invalid)"
+    }
+  ],
+  "observations": [
+    {
+      "id": "OBS-001",
+      "source_id": "SRC-01",
+      "observed_at": "2026-08-02T10:15:00Z",
+      "evidence_type": "profile_created",
+      "summary": "wavecutter created on Tidepool.",
+      "confidence": 0.9,
+      "entity_id": "ENT-001"
+    },
+    {
+      "id": "OBS-002",
+      "source_id": "SRC-01",
+      "observed_at": "2026-08-02T10:17:00Z",
+      "evidence_type": "key_listed",
+      "summary": "wavecutter profile on Tidepool lists PGP-style key FP5.",
+      "confidence": 0.9,
+      "entity_id": "ENT-006",
+      "details": {
+        "actor_entity_id": "ENT-001",
+        "key": "ENT-006"
+      }
+    },
+    {
+      "id": "OBS-003",
+      "source_id": "SRC-01",
+      "observed_at": "2026-08-06T12:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "wavecutter mixes English with Spanish words and ends every list with 'listo.'",
+      "confidence": 0.6,
+      "entity_id": "ENT-001"
+    },
+    {
+      "id": "OBS-004",
+      "source_id": "SRC-01",
+      "observed_at": "2026-08-09T12:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "wavecutter uses the rare word 'thrice' in most posts.",
+      "confidence": 0.55,
+      "entity_id": "ENT-001"
+    },
+    {
+      "id": "OBS-005",
+      "source_id": "SRC-01",
+      "observed_at": "2026-08-12T11:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "plainsong created on Tidepool.",
+      "confidence": 0.9,
+      "entity_id": "ENT-004"
+    },
+    {
+      "id": "OBS-006",
+      "source_id": "SRC-01",
+      "observed_at": "2026-08-12T11:02:00Z",
+      "evidence_type": "key_listed",
+      "summary": "plainsong profile lists PGP-style key FP6.",
+      "confidence": 0.9,
+      "entity_id": "ENT-007",
+      "details": {
+        "actor_entity_id": "ENT-004",
+        "key": "ENT-007"
+      }
+    },
+    {
+      "id": "OBS-007",
+      "source_id": "SRC-01",
+      "observed_at": "2026-08-15T12:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "plainsong ends lists with 'listo.' and uses Spanish greetings, in a formal register.",
+      "confidence": 0.5,
+      "entity_id": "ENT-004"
+    },
+    {
+      "id": "OBS-008",
+      "source_id": "SRC-04",
+      "observed_at": "2026-08-20T12:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "Corpus check: wavecutter's roughly 40-post sample is too short for reliable authorship scoring.",
+      "confidence": 0.35,
+      "entity_id": "ENT-001"
+    },
+    {
+      "id": "OBS-009",
+      "source_id": "SRC-02",
+      "observed_at": "2026-08-28T19:20:00Z",
+      "evidence_type": "profile_created",
+      "summary": "wave_cutter_ created on Rooklane.",
+      "confidence": 0.9,
+      "entity_id": "ENT-002"
+    },
+    {
+      "id": "OBS-010",
+      "source_id": "SRC-02",
+      "observed_at": "2026-08-28T19:22:00Z",
+      "evidence_type": "key_listed",
+      "summary": "wave_cutter_ profile on Rooklane lists PGP-style key FP5.",
+      "confidence": 0.9,
+      "entity_id": "ENT-006",
+      "details": {
+        "actor_entity_id": "ENT-002",
+        "key": "ENT-006"
+      }
+    },
+    {
+      "id": "OBS-011",
+      "source_id": "SRC-02",
+      "observed_at": "2026-09-02T12:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "wave_cutter_ mixes English and Spanish words and ends lists with 'listo.'",
+      "confidence": 0.6,
+      "entity_id": "ENT-002"
+    },
+    {
+      "id": "OBS-012",
+      "source_id": "SRC-02",
+      "observed_at": "2026-09-05T12:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "wave_cutter_ uses the rare word 'thrice'.",
+      "confidence": 0.55,
+      "entity_id": "ENT-002"
+    },
+    {
+      "id": "OBS-013",
+      "source_id": "SRC-01",
+      "observed_at": "2026-09-10T12:00:00Z",
+      "evidence_type": "account_inactive",
+      "summary": "wavecutter posts a break announcement on Tidepool and goes quiet.",
+      "confidence": 0.9,
+      "entity_id": "ENT-001"
+    },
+    {
+      "id": "OBS-014",
+      "source_id": "SRC-03",
+      "observed_at": "2026-09-14T12:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "reef_ghost created on Saltgrass; no key listed.",
+      "confidence": 0.6,
+      "entity_id": "ENT-003"
+    },
+    {
+      "id": "OBS-015",
+      "source_id": "SRC-03",
+      "observed_at": "2026-09-16T12:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "reef_ghost mixes English and Spanish words and ends lists with 'listo.'",
+      "confidence": 0.5,
+      "entity_id": "ENT-003"
+    },
+    {
+      "id": "OBS-016",
+      "source_id": "SRC-03",
+      "observed_at": "2026-09-18T12:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "reef_ghost uses the rare word 'thrice' in several posts.",
+      "confidence": 0.45,
+      "entity_id": "ENT-003"
+    },
+    {
+      "id": "OBS-017",
+      "source_id": "SRC-05",
+      "observed_at": "2026-09-20T12:00:00Z",
+      "evidence_type": "analyst_note",
+      "summary": "reef_ghost matches wavecutter's style quirks but shares no identifier; text is short and mixed-language, so stylometry is noisy. Needs more evidence.",
+      "confidence": 0.4,
+      "entity_id": "ENT-003"
+    },
+    {
+      "id": "OBS-018",
+      "source_id": "SRC-03",
+      "observed_at": "2026-09-25T12:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "wavecutter_mirror created on Saltgrass; no key listed.",
+      "confidence": 0.5,
+      "entity_id": "ENT-005"
+    },
+    {
+      "id": "OBS-019",
+      "source_id": "SRC-03",
+      "observed_at": "2026-09-26T12:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "wavecutter_mirror reposts three of wavecutter's earlier listings word for word, including the sign-off, with a different payment note.",
+      "confidence": 0.4,
+      "entity_id": "ENT-005"
+    },
+    {
+      "id": "OBS-020",
+      "source_id": "SRC-03",
+      "observed_at": "2026-09-28T12:00:00Z",
+      "evidence_type": "posting_pattern",
+      "summary": "wavecutter_mirror posts at irregular hours in bursts of copied text; wavecutter and wave_cutter_ posted only in the evening.",
+      "confidence": 0.4,
+      "entity_id": "ENT-005"
+    },
+    {
+      "id": "OBS-021",
+      "source_id": "SRC-01",
+      "observed_at": "2026-10-03T12:00:00Z",
+      "evidence_type": "posting_pattern",
+      "summary": "plainsong posts around midday UTC; wavecutter posts in the evening.",
+      "confidence": 0.5,
+      "entity_id": "ENT-004"
+    },
+    {
+      "id": "OBS-022",
+      "source_id": "SRC-05",
+      "observed_at": "2026-10-05T12:00:00Z",
+      "evidence_type": "analyst_note",
+      "summary": "Spanish word mixing is common among unrelated vendors in this archive; not distinctive on its own.",
+      "confidence": 0.5,
+      "entity_id": "ENT-001"
+    }
+  ]
+}

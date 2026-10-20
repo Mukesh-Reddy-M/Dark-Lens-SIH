@@ -1,0 +1,288 @@
+{
+  "schema_version": "1.0",
+  "data_mode": "synthetic",
+  "case": {
+    "id": "CASE-2026-005",
+    "title": "Glasshouse",
+    "description": "Fictional case for demonstration: invented dark-market, forum and shop services expose infrastructure clues (1 Sep - 12 Oct 2026). All names and addresses are invented and use reserved ranges."
+  },
+  "sources": [
+    {
+      "id": "SRC-05",
+      "name": "Analyst note",
+      "source_type": "analyst_note",
+      "reliability": 0.5
+    },
+    {
+      "id": "SRC-02",
+      "name": "Certificate transparency log",
+      "source_type": "ct_log",
+      "reliability": 0.85
+    },
+    {
+      "id": "SRC-03",
+      "name": "Glasshouse archived dump",
+      "source_type": "archived_market_dump",
+      "reliability": 0.85
+    },
+    {
+      "id": "SRC-06",
+      "name": "Passive DNS extract",
+      "source_type": "passive_dns",
+      "reliability": 0.75
+    },
+    {
+      "id": "SRC-04",
+      "name": "Pinecone archived dump",
+      "source_type": "archived_market_dump",
+      "reliability": 0.8
+    },
+    {
+      "id": "SRC-01",
+      "name": "Public scan snapshot",
+      "source_type": "public_scan",
+      "reliability": 0.8
+    }
+  ],
+  "entities": [
+    {
+      "id": "ENT-009",
+      "type": "handle",
+      "display_label": "gh_admin (Glasshouse)"
+    },
+    {
+      "id": "ENT-010",
+      "type": "handle",
+      "display_label": "pinecone_sales (Pinecone)"
+    },
+    {
+      "id": "ENT-006",
+      "type": "infrastructure",
+      "display_label": "192.0.2.200 (cert CS-2090)"
+    },
+    {
+      "id": "ENT-004",
+      "type": "infrastructure",
+      "display_label": "198.51.100.40 (cert CS-2001)"
+    },
+    {
+      "id": "ENT-005",
+      "type": "infrastructure",
+      "display_label": "203.0.113.60 (cert CS-2002)"
+    },
+    {
+      "id": "ENT-008",
+      "type": "infrastructure",
+      "display_label": "Favicon hash SYNTH-FAV-DEFAULT"
+    },
+    {
+      "id": "ENT-007",
+      "type": "infrastructure",
+      "display_label": "SSH host key SYNTH-SSHFP-0001"
+    },
+    {
+      "id": "ENT-001",
+      "type": "service",
+      "display_label": "Glasshouse market (glasshouse.synthetic.invalid)"
+    },
+    {
+      "id": "ENT-002",
+      "type": "service",
+      "display_label": "Mirrorlake forum (mirrorlake.synthetic.invalid)"
+    },
+    {
+      "id": "ENT-003",
+      "type": "service",
+      "display_label": "Pinecone shop (pinecone.synthetic.invalid)"
+    }
+  ],
+  "observations": [
+    {
+      "id": "OBS-001",
+      "source_id": "SRC-03",
+      "observed_at": "2026-09-01T09:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "gh_admin posts as administrator on Glasshouse.",
+      "confidence": 0.8,
+      "entity_id": "ENT-009"
+    },
+    {
+      "id": "OBS-002",
+      "source_id": "SRC-01",
+      "observed_at": "2026-09-03T10:00:00Z",
+      "evidence_type": "status_page_leak",
+      "summary": "Glasshouse status page exposes certificate serial CS-2001 and address 198.51.100.40.",
+      "confidence": 0.8,
+      "entity_id": "ENT-001",
+      "details": {
+        "certificate": "CS-2001",
+        "ip": "198.51.100.40"
+      }
+    },
+    {
+      "id": "OBS-003",
+      "source_id": "SRC-02",
+      "observed_at": "2026-09-04T09:30:00Z",
+      "evidence_type": "certificate",
+      "summary": "CT log: CS-2001 issued for 198.51.100.40.",
+      "confidence": 0.85,
+      "entity_id": "ENT-004",
+      "details": {
+        "certificate": "CS-2001",
+        "ip": "198.51.100.40"
+      }
+    },
+    {
+      "id": "OBS-004",
+      "source_id": "SRC-06",
+      "observed_at": "2026-09-05T11:00:00Z",
+      "evidence_type": "dns_record",
+      "summary": "Passive DNS: the Glasshouse service name resolved to 198.51.100.40 during September.",
+      "confidence": 0.7,
+      "entity_id": "ENT-001",
+      "details": {
+        "ip": "198.51.100.40"
+      }
+    },
+    {
+      "id": "OBS-005",
+      "source_id": "SRC-01",
+      "observed_at": "2026-09-07T10:30:00Z",
+      "evidence_type": "ssh_fingerprint",
+      "summary": "Scan: SSH host key SYNTH-SSHFP-0001 presented by 198.51.100.40.",
+      "confidence": 0.8,
+      "entity_id": "ENT-007",
+      "details": {
+        "ip": "198.51.100.40"
+      }
+    },
+    {
+      "id": "OBS-006",
+      "source_id": "SRC-04",
+      "observed_at": "2026-09-10T09:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "pinecone_sales opens the Pinecone shop.",
+      "confidence": 0.8,
+      "entity_id": "ENT-010"
+    },
+    {
+      "id": "OBS-007",
+      "source_id": "SRC-01",
+      "observed_at": "2026-09-12T10:30:00Z",
+      "evidence_type": "ssh_fingerprint",
+      "summary": "Scan: the same SSH host key SYNTH-SSHFP-0001 presented by 203.0.113.60.",
+      "confidence": 0.8,
+      "entity_id": "ENT-007",
+      "details": {
+        "ip": "203.0.113.60"
+      }
+    },
+    {
+      "id": "OBS-008",
+      "source_id": "SRC-06",
+      "observed_at": "2026-09-13T11:00:00Z",
+      "evidence_type": "dns_record",
+      "summary": "Passive DNS: the Pinecone shop name resolved to 203.0.113.60.",
+      "confidence": 0.7,
+      "entity_id": "ENT-003",
+      "details": {
+        "ip": "203.0.113.60"
+      }
+    },
+    {
+      "id": "OBS-009",
+      "source_id": "SRC-01",
+      "observed_at": "2026-09-16T10:00:00Z",
+      "evidence_type": "uptime_pattern",
+      "summary": "Mirrorlake restarts around 03:00 UTC on the same days as Glasshouse.",
+      "confidence": 0.5,
+      "entity_id": "ENT-002"
+    },
+    {
+      "id": "OBS-010",
+      "source_id": "SRC-06",
+      "observed_at": "2026-09-18T11:00:00Z",
+      "evidence_type": "dns_record",
+      "summary": "Passive DNS: Mirrorlake resolved to 198.51.100.77, in the same /24 range as Glasshouse.",
+      "confidence": 0.55,
+      "entity_id": "ENT-002",
+      "details": {
+        "ip": "198.51.100.77"
+      }
+    },
+    {
+      "id": "OBS-011",
+      "source_id": "SRC-05",
+      "observed_at": "2026-09-20T12:00:00Z",
+      "evidence_type": "analyst_note",
+      "summary": "Mirrorlake and Glasshouse share a hosting range and restart times, nothing unique. Needs more evidence.",
+      "confidence": 0.4,
+      "entity_id": "ENT-002"
+    },
+    {
+      "id": "OBS-012",
+      "source_id": "SRC-01",
+      "observed_at": "2026-09-22T10:00:00Z",
+      "evidence_type": "banner",
+      "summary": "Host 192.0.2.200 shows default banner nginx/1.22-synth, the same as 198.51.100.40.",
+      "confidence": 0.8,
+      "entity_id": "ENT-006",
+      "details": {
+        "ip": "192.0.2.200"
+      }
+    },
+    {
+      "id": "OBS-013",
+      "source_id": "SRC-02",
+      "observed_at": "2026-09-23T10:00:00Z",
+      "evidence_type": "certificate",
+      "summary": "CT log: 192.0.2.200 holds CS-2090 issued to an unrelated organisation (invented); address reassignment recorded in August.",
+      "confidence": 0.8,
+      "entity_id": "ENT-006",
+      "details": {
+        "certificate": "CS-2090",
+        "ip": "192.0.2.200"
+      }
+    },
+    {
+      "id": "OBS-014",
+      "source_id": "SRC-01",
+      "observed_at": "2026-09-25T10:00:00Z",
+      "evidence_type": "favicon",
+      "summary": "Mirrorlake and Pinecone both serve favicon hash SYNTH-FAV-DEFAULT, the default icon of a common template.",
+      "confidence": 0.5,
+      "entity_id": "ENT-008"
+    },
+    {
+      "id": "OBS-015",
+      "source_id": "SRC-05",
+      "observed_at": "2026-09-26T12:00:00Z",
+      "evidence_type": "analyst_note",
+      "summary": "Favicon hash SYNTH-FAV-DEFAULT matches the template default and is shared by many sites; not distinctive.",
+      "confidence": 0.5,
+      "entity_id": "ENT-008"
+    },
+    {
+      "id": "OBS-016",
+      "source_id": "SRC-03",
+      "observed_at": "2026-10-01T03:10:00Z",
+      "evidence_type": "posting_pattern",
+      "summary": "gh_admin announces maintenance windows at 03:00 UTC.",
+      "confidence": 0.6,
+      "entity_id": "ENT-009"
+    },
+    {
+      "id": "OBS-017",
+      "source_id": "SRC-02",
+      "observed_at": "2026-10-08T10:00:00Z",
+      "evidence_type": "certificate",
+      "summary": "CT log: CS-2002 issued for 203.0.113.60 for the Pinecone shop name.",
+      "confidence": 0.85,
+      "entity_id": "ENT-005",
+      "details": {
+        "certificate": "CS-2002",
+        "ip": "203.0.113.60"
+      }
+    }
+  ]
+}

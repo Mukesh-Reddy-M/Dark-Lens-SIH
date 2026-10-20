@@ -1,0 +1,195 @@
+{
+  "schema_version": "1.0",
+  "case": {
+    "id": "HOLDOUT-2026-004",
+    "title": "Nightshade",
+    "description": "Synthetic holdout case testing evidence quality and contradiction analysis: a pharmaceutical vendor migration featuring exact mirror duplicate reports, explicit downstream derived clues, confirmed contradiction via public operator denial, and concurrent activity review context."
+  },
+  "sources": [
+    {
+      "id": "SRC-01",
+      "name": "Verdant Market primary archive",
+      "source_type": "archived_market_dump",
+      "reliability": 0.9
+    },
+    {
+      "id": "SRC-02",
+      "name": "Verdant Market mirror archive",
+      "source_type": "archived_market_dump",
+      "reliability": 0.85
+    },
+    {
+      "id": "SRC-03",
+      "name": "Aconite Exchange dump",
+      "source_type": "archived_market_dump",
+      "reliability": 0.85
+    },
+    {
+      "id": "SRC-04",
+      "name": "Public forum rumor board",
+      "source_type": "forum_scrape",
+      "reliability": 0.35
+    },
+    {
+      "id": "SRC-05",
+      "name": "Analyst note",
+      "source_type": "analyst_note",
+      "reliability": 0.5
+    }
+  ],
+  "entities": [
+    {
+      "id": "ENT-001",
+      "type": "handle",
+      "display_label": "nightshade_lab (Verdant Market)"
+    },
+    {
+      "id": "ENT-002",
+      "type": "handle",
+      "display_label": "belladonna_rx (Aconite Exchange)"
+    },
+    {
+      "id": "ENT-003",
+      "type": "handle",
+      "display_label": "nightshade_imposter (Aconite Exchange)"
+    },
+    {
+      "id": "ENT-004",
+      "type": "pgp_key",
+      "display_label": "FP-NIGHT99 8877 6655 4433 2211 00AA BBCC DDEE FF00 9999"
+    },
+    {
+      "id": "ENT-005",
+      "type": "wallet",
+      "display_label": "SYNTH-W-NIGHT0000000001"
+    },
+    {
+      "id": "ENT-006",
+      "type": "handle",
+      "display_label": "spore_trader (Verdant Market)"
+    },
+    {
+      "id": "ENT-007",
+      "type": "handle",
+      "display_label": "hemlock_buyer (Aconite Exchange)"
+    }
+  ],
+  "observations": [
+    {
+      "id": "OBS-001",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-001",
+      "observed_at": "2026-07-01T10:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "Handle nightshade_lab registered on Verdant Market.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-002",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-004",
+      "observed_at": "2026-07-01T10:05:00Z",
+      "evidence_type": "key_listed",
+      "summary": "nightshade_lab profile lists PGP key FP-NIGHT99.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-003",
+      "source_id": "SRC-02",
+      "entity_id": "ENT-004",
+      "observed_at": "2026-07-01T10:05:00Z",
+      "evidence_type": "key_listed",
+      "summary": "nightshade_lab profile lists PGP key FP-NIGHT99.",
+      "confidence": 0.85,
+      "details": {
+        "mirror_of": "SRC-01"
+      }
+    },
+    {
+      "id": "OBS-004",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-005",
+      "observed_at": "2026-07-01T10:10:00Z",
+      "evidence_type": "wallet_listed",
+      "summary": "nightshade_lab payment instructions specify wallet W-NIGHT0000000001.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-005",
+      "source_id": "SRC-03",
+      "entity_id": "ENT-002",
+      "observed_at": "2026-07-15T12:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "Handle belladonna_rx created on Aconite Exchange following Verdant Market seizure.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-006",
+      "source_id": "SRC-03",
+      "entity_id": "ENT-004",
+      "observed_at": "2026-07-15T12:05:00Z",
+      "evidence_type": "key_listed",
+      "summary": "belladonna_rx profile lists PGP key FP-NIGHT99.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-007",
+      "source_id": "SRC-03",
+      "entity_id": "ENT-005",
+      "observed_at": "2026-07-15T12:10:00Z",
+      "evidence_type": "wallet_listed",
+      "summary": "belladonna_rx direct payouts accept wallet W-NIGHT0000000001.",
+      "confidence": 0.85
+    },
+    {
+      "id": "OBS-008",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-001",
+      "observed_at": "2026-07-18T14:00:00Z",
+      "evidence_type": "counter_evidence",
+      "summary": "nightshade_lab posts warning: 'Beware of nightshade_imposter on Aconite; that account is different owner and not the same operator.'",
+      "confidence": 0.95,
+      "details": {
+        "counter_evidence": true,
+        "conflict": "Operator explicitly refutes controlling nightshade_imposter"
+      }
+    },
+    {
+      "id": "OBS-009",
+      "source_id": "SRC-04",
+      "entity_id": "ENT-003",
+      "observed_at": "2026-07-19T16:00:00Z",
+      "evidence_type": "impersonation_claim",
+      "summary": "nightshade_imposter claims to be original nightshade_lab vendor, but lists no PGP key.",
+      "confidence": 0.3
+    },
+    {
+      "id": "OBS-010",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-006",
+      "observed_at": "2026-07-20T11:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "spore_trader uses the rare word 'alkaloid'.",
+      "confidence": 0.55
+    },
+    {
+      "id": "OBS-011",
+      "source_id": "SRC-03",
+      "entity_id": "ENT-007",
+      "observed_at": "2026-07-21T13:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "hemlock_buyer uses the rare word 'alkaloid'.",
+      "confidence": 0.55
+    },
+    {
+      "id": "OBS-012",
+      "source_id": "SRC-05",
+      "entity_id": "ENT-006",
+      "observed_at": "2026-07-25T10:00:00Z",
+      "evidence_type": "analyst_note",
+      "summary": "spore_trader and hemlock_buyer were active at the same time throughout late July 2026; concurrent activity lowers chance of single operator.",
+      "confidence": 0.4
+    }
+  ],
+  "data_mode": "synthetic"
+}

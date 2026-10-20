@@ -1,0 +1,35 @@
+{
+  "description": "Glasshouse — invented dark-market, forum and shop services expose infrastructure clues. Glasshouse market shares a certificate serial with its infrastructure node; a distinctive fingerprint path connects Glasshouse to Pinecone shop. Shared-subnet proximity to Mirrorlake is a weak contextual lead, not attribution.",
+  "synthetic_only": true,
+  "personas": [],
+  "links": [
+    {
+      "id": "GH-L001",
+      "pair": ["ENT-001", "ENT-004"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "Glasshouse market <-> 198.51.100.40 (cert CS-2001): shared infrastructure reference"
+    },
+    {
+      "id": "GH-L002",
+      "pair": ["ENT-001", "ENT-003"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "Glasshouse market <-> Pinecone shop: strong infrastructure indicator path via unique certificate"
+    },
+    {
+      "id": "GH-D001",
+      "pair": ["ENT-001", "ENT-002"],
+      "type": "decoy",
+      "expected_score": "<0.30",
+      "note": "Glasshouse <-> Mirrorlake: shared subnet proximity only; weak contextual lead"
+    },
+    {
+      "id": "GH-D002",
+      "pair": ["ENT-009", "ENT-010"],
+      "type": "decoy",
+      "expected_score": "<0.20",
+      "note": "gh_admin <-> pinecone_sales: weak contextual infra correlation; not attribution"
+    }
+  ]
+}

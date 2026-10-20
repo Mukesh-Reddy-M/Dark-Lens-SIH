@@ -1,0 +1,61 @@
+{
+  "description": "Blackthorn — synthetic threat syndicate running a malware distribution panel migrates across hosting providers and forums. thorn_admin, blackthorn_ops, and sloe_gin share PGP key FP92, wallet W92, and custom sign-off habits. ThornGate Panel shares certificate CS-9902 with host 198.51.100.77. thorn_admin_imposter is an unverified impersonation claim decoy, shared CDN proxy 198.51.100.99 is an infrastructure decoy, and shadow_broker_99 / sloe_scout share a generic weekday morning activity pattern.",
+  "synthetic_only": true,
+  "personas": [
+    {
+      "description": "Likely same operator across syndicate migration: thorn_admin, blackthorn_ops, and sloe_gin",
+      "entities": ["ENT-001", "ENT-002", "ENT-003"]
+    }
+  ],
+  "links": [
+    {
+      "id": "BT-L001",
+      "pair": ["ENT-001", "ENT-002"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "thorn_admin (SloeNet) <-> blackthorn_ops (ThornForum): shared PGP FP92, wallet W92, and sign-off style"
+    },
+    {
+      "id": "BT-L002",
+      "pair": ["ENT-009", "ENT-010"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "ThornGate Panel <-> 198.51.100.77: matching certificate serial CS-9902"
+    },
+    {
+      "id": "BT-L003",
+      "pair": ["ENT-001", "ENT-003"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "thorn_admin (SloeNet) <-> sloe_gin (BriarLeak): shared wallet W92 and sign-off style"
+    },
+    {
+      "id": "BT-L004",
+      "pair": ["ENT-002", "ENT-003"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "blackthorn_ops (ThornForum) <-> sloe_gin (BriarLeak): shared wallet W92 and sign-off style"
+    },
+    {
+      "id": "BT-L005",
+      "pair": ["ENT-005", "ENT-006"],
+      "type": "weak",
+      "expected_score": "<=0.45",
+      "note": "shadow_broker_99 <-> sloe_scout: generic weekday morning activity overlap; review-strength cap"
+    },
+    {
+      "id": "BT-D001",
+      "pair": ["ENT-001", "ENT-004"],
+      "type": "decoy",
+      "expected_score": "<0.30",
+      "note": "thorn_admin <-> thorn_admin_imposter: unverified Telegram claim decoy; must not be proposed"
+    },
+    {
+      "id": "BT-D002",
+      "pair": ["ENT-009", "ENT-011"],
+      "type": "decoy",
+      "expected_score": "<0.30",
+      "note": "ThornGate Panel <-> common CDN proxy: shared hosting reverse proxy decoy; must stay suppressed"
+    }
+  ]
+}

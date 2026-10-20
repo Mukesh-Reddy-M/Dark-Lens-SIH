@@ -1,0 +1,61 @@
+{
+  "description": "Osprey — synthetic broker of telemetry and credential dumps operates across three leak boards (Talon Bazaar, Cormorant Exchange, Gull Forum). osprey_intel, sea_hawk_data, and pandion_leaks share PGP key FP73, wallet W73, and bilingual writing quirks. Talon Bazaar shares certificate CS-7711 with host 198.51.100.63. osprey_fan is an unverified copycat rumor decoy, harbor_relay is a shared exchange pooling decoy, and gull_watcher / cormorant_scout share a weak rare word overlap with concurrent activity.",
+  "synthetic_only": true,
+  "personas": [
+    {
+      "description": "Likely same broker operator across migrations: osprey_intel, sea_hawk_data, and pandion_leaks",
+      "entities": ["ENT-001", "ENT-002", "ENT-003"]
+    }
+  ],
+  "links": [
+    {
+      "id": "OP-L001",
+      "pair": ["ENT-001", "ENT-002"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "osprey_intel (Talon) <-> sea_hawk_data (Cormorant): shared PGP FP73, wallet W73, and style"
+    },
+    {
+      "id": "OP-L002",
+      "pair": ["ENT-010", "ENT-011"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "Talon Bazaar <-> 198.51.100.63: matching certificate serial CS-7711"
+    },
+    {
+      "id": "OP-L003",
+      "pair": ["ENT-001", "ENT-003"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "osprey_intel (Talon) <-> pandion_leaks (Gull): shared wallet W73 and style"
+    },
+    {
+      "id": "OP-L004",
+      "pair": ["ENT-002", "ENT-003"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "sea_hawk_data (Cormorant) <-> pandion_leaks (Gull): shared wallet W73 and style"
+    },
+    {
+      "id": "OP-L005",
+      "pair": ["ENT-006", "ENT-007"],
+      "type": "weak",
+      "expected_score": "<=0.45",
+      "note": "gull_watcher <-> cormorant_scout: weak rare word overlap, concurrent activity"
+    },
+    {
+      "id": "OP-D001",
+      "pair": ["ENT-001", "ENT-004"],
+      "type": "decoy",
+      "expected_score": "<0.30",
+      "note": "osprey_intel <-> osprey_fan: unverified copycat rumor decoy; must not be proposed"
+    },
+    {
+      "id": "OP-D002",
+      "pair": ["ENT-002", "ENT-005"],
+      "type": "decoy",
+      "expected_score": "<0.30",
+      "note": "sea_hawk_data <-> harbor_relay: shared exchange pooling decoy; must stay suppressed"
+    }
+  ]
+}

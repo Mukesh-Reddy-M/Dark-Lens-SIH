@@ -1,0 +1,26 @@
+{
+  "description": "Lowtide — rumours and anonymous tips conflict with archived records on invented marketplaces (Hollis Market and Fenwick Exchange). lowtide_trader and norrow share a key at high priority. A style-similarity lead between tide_low and norrow is weak and should remain below the review threshold.",
+  "synthetic_only": true,
+  "personas": [
+    {
+      "description": "Likely same operator: lowtide_trader (Hollis Market) and norrow (Hollis Market) share a PGP-style key",
+      "entities": ["ENT-001", "ENT-003"]
+    }
+  ],
+  "links": [
+    {
+      "id": "LT-L001",
+      "pair": ["ENT-001", "ENT-003"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "lowtide_trader <-> norrow: shared PGP-style key"
+    },
+    {
+      "id": "LT-D001",
+      "pair": ["ENT-002", "ENT-003"],
+      "type": "decoy",
+      "expected_score": "<0.30",
+      "note": "tide_low <-> norrow: style-similarity only; rumours and tips excluded; should stay weak"
+    }
+  ]
+}

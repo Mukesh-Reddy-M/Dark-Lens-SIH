@@ -1,0 +1,33 @@
+{
+  "description": "Copperline — vendors of counterfeit event passes move funds through wallet-shaped identifiers (Vellum and Ashlar markets). Repeated co-input observations link two wallets; the wallet cluster links the two vendor handles at high priority. A shared activity window between copperwire and lathe9 is a weak decoy.",
+  "synthetic_only": true,
+  "personas": [
+    {
+      "description": "Likely same operator: ironbark (Vellum) and copperwire (Ashlar) share a wallet co-input cluster",
+      "entities": ["ENT-001", "ENT-002"]
+    }
+  ],
+  "links": [
+    {
+      "id": "CP-L001",
+      "pair": ["ENT-005", "ENT-006"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "SYNTH-W5 <-> SYNTH-W6: repeated wallet co-input relationship"
+    },
+    {
+      "id": "CP-L002",
+      "pair": ["ENT-001", "ENT-002"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "ironbark <-> copperwire: wallet cluster correlation via co-input wallets"
+    },
+    {
+      "id": "CP-D001",
+      "pair": ["ENT-002", "ENT-004"],
+      "type": "decoy",
+      "expected_score": "<0.50",
+      "note": "copperwire <-> lathe9: posting-pattern overlap only; weak decoy"
+    }
+  ]
+}

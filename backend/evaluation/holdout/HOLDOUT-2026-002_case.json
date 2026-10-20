@@ -1,0 +1,271 @@
+{
+  "schema_version": "1.0",
+  "case": {
+    "id": "HOLDOUT-2026-002",
+    "title": "Blackthorn",
+    "description": "Synthetic holdout case: an invented threat syndicate running a malware distribution panel migrates across hosting providers and forums. Features shared cryptographic keys, wallets, custom sign-offs, an SSL certificate link, an unverified impersonation claim decoy, a shared CDN reverse proxy decoy, and a weak schedule-overlap lead."
+  },
+  "sources": [
+    {
+      "id": "SRC-01",
+      "name": "SloeNet forum archive",
+      "source_type": "forum_scrape",
+      "reliability": 0.9
+    },
+    {
+      "id": "SRC-02",
+      "name": "ThornForum archive",
+      "source_type": "forum_scrape",
+      "reliability": 0.85
+    },
+    {
+      "id": "SRC-03",
+      "name": "BriarLeak dump",
+      "source_type": "archived_market_dump",
+      "reliability": 0.8
+    },
+    {
+      "id": "SRC-04",
+      "name": "Public TLS scan",
+      "source_type": "public_scan",
+      "reliability": 0.85
+    },
+    {
+      "id": "SRC-05",
+      "name": "Certificate transparency log",
+      "source_type": "ct_log",
+      "reliability": 0.9
+    },
+    {
+      "id": "SRC-06",
+      "name": "Passive DNS and network scan",
+      "source_type": "public_scan",
+      "reliability": 0.75
+    },
+    {
+      "id": "SRC-07",
+      "name": "Unverified chat room scrape",
+      "source_type": "chat_scrape",
+      "reliability": 0.35
+    },
+    {
+      "id": "SRC-08",
+      "name": "Analyst activity note",
+      "source_type": "analyst_note",
+      "reliability": 0.5
+    }
+  ],
+  "entities": [
+    {
+      "id": "ENT-001",
+      "type": "handle",
+      "display_label": "thorn_admin (SloeNet)"
+    },
+    {
+      "id": "ENT-002",
+      "type": "handle",
+      "display_label": "blackthorn_ops (ThornForum)"
+    },
+    {
+      "id": "ENT-003",
+      "type": "handle",
+      "display_label": "sloe_gin (BriarLeak)"
+    },
+    {
+      "id": "ENT-004",
+      "type": "handle",
+      "display_label": "thorn_admin_imposter (ThornForum)"
+    },
+    {
+      "id": "ENT-005",
+      "type": "handle",
+      "display_label": "shadow_broker_99 (BriarLeak)"
+    },
+    {
+      "id": "ENT-006",
+      "type": "handle",
+      "display_label": "sloe_scout (SloeNet)"
+    },
+    {
+      "id": "ENT-007",
+      "type": "pgp_key",
+      "display_label": "FP92 1122 3344 5566 7788 9900 AABB CCDD EEFF 0092"
+    },
+    {
+      "id": "ENT-008",
+      "type": "wallet",
+      "display_label": "SYNTH-W92-BLACKTHORN0000000002"
+    },
+    {
+      "id": "ENT-009",
+      "type": "service",
+      "display_label": "ThornGate Panel (thorngate.synthetic.invalid)"
+    },
+    {
+      "id": "ENT-010",
+      "type": "infrastructure",
+      "display_label": "198.51.100.77 (cert CS-9902)"
+    },
+    {
+      "id": "ENT-011",
+      "type": "infrastructure",
+      "display_label": "198.51.100.99 (common CDN proxy)"
+    }
+  ],
+  "observations": [
+    {
+      "id": "OBS-001",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-001",
+      "observed_at": "2026-06-01T09:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "Handle thorn_admin registered on SloeNet.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-002",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-007",
+      "observed_at": "2026-06-01T09:05:00Z",
+      "evidence_type": "key_listed",
+      "summary": "thorn_admin profile lists PGP key FP92.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-003",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-008",
+      "observed_at": "2026-06-01T09:10:00Z",
+      "evidence_type": "wallet_listed",
+      "summary": "thorn_admin lists wallet W92 for syndicate licensing fees.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-004",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-001",
+      "observed_at": "2026-06-04T10:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "thorn_admin posts sign off 'sharp thorns, cold steel' and use two spaces after full stops.",
+      "confidence": 0.65
+    },
+    {
+      "id": "OBS-005",
+      "source_id": "SRC-05",
+      "entity_id": "ENT-009",
+      "observed_at": "2026-06-10T12:00:00Z",
+      "evidence_type": "certificate_issuance",
+      "summary": "Certificate transparency log lists CS-9902 issued to thorngate.synthetic.invalid.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-006",
+      "source_id": "SRC-04",
+      "entity_id": "ENT-010",
+      "observed_at": "2026-06-11T14:00:00Z",
+      "evidence_type": "tls_scan",
+      "summary": "Public scan of 198.51.100.77 reveals TLS certificate CS-9902.",
+      "confidence": 0.85
+    },
+    {
+      "id": "OBS-007",
+      "source_id": "SRC-02",
+      "entity_id": "ENT-002",
+      "observed_at": "2026-06-20T11:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "Handle blackthorn_ops created on ThornForum.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-008",
+      "source_id": "SRC-02",
+      "entity_id": "ENT-007",
+      "observed_at": "2026-06-20T11:05:00Z",
+      "evidence_type": "key_listed",
+      "summary": "blackthorn_ops profile lists PGP key FP92.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-009",
+      "source_id": "SRC-02",
+      "entity_id": "ENT-008",
+      "observed_at": "2026-06-20T11:10:00Z",
+      "evidence_type": "wallet_listed",
+      "summary": "blackthorn_ops payment terms require transfers to wallet W92.",
+      "confidence": 0.85
+    },
+    {
+      "id": "OBS-010",
+      "source_id": "SRC-02",
+      "entity_id": "ENT-002",
+      "observed_at": "2026-06-22T13:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "blackthorn_ops posts sign off 'sharp thorns, cold steel' and use two spaces after full stops.",
+      "confidence": 0.65
+    },
+    {
+      "id": "OBS-011",
+      "source_id": "SRC-03",
+      "entity_id": "ENT-003",
+      "observed_at": "2026-07-01T15:00:00Z",
+      "evidence_type": "profile_created",
+      "summary": "Handle sloe_gin registered on BriarLeak.",
+      "confidence": 0.8
+    },
+    {
+      "id": "OBS-012",
+      "source_id": "SRC-03",
+      "entity_id": "ENT-008",
+      "observed_at": "2026-07-01T15:10:00Z",
+      "evidence_type": "wallet_listed",
+      "summary": "sloe_gin escrow deposit lists wallet W92.",
+      "confidence": 0.85
+    },
+    {
+      "id": "OBS-013",
+      "source_id": "SRC-03",
+      "entity_id": "ENT-003",
+      "observed_at": "2026-07-03T16:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "sloe_gin posts sign off 'sharp thorns, cold steel' and use two spaces after full stops.",
+      "confidence": 0.65
+    },
+    {
+      "id": "OBS-014",
+      "source_id": "SRC-07",
+      "entity_id": "ENT-004",
+      "observed_at": "2026-07-05T17:00:00Z",
+      "evidence_type": "rumor",
+      "summary": "Unverified Telegram message claims thorn_admin_imposter is the sole valid administrator of ThornGate, but lists no PGP key.",
+      "confidence": 0.3
+    },
+    {
+      "id": "OBS-015",
+      "source_id": "SRC-06",
+      "entity_id": "ENT-011",
+      "observed_at": "2026-07-10T10:00:00Z",
+      "evidence_type": "dns_record",
+      "summary": "Network scan notes 198.51.100.99 is a shared hosting reverse proxy IP; shared by many unrelated organisations.",
+      "confidence": 0.4
+    },
+    {
+      "id": "OBS-016",
+      "source_id": "SRC-03",
+      "entity_id": "ENT-005",
+      "observed_at": "2026-07-15T09:00:00Z",
+      "evidence_type": "activity_pattern",
+      "summary": "shadow_broker_99 shows weekday activity 08:00 to 12:00 UTC.",
+      "confidence": 0.6
+    },
+    {
+      "id": "OBS-017",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-006",
+      "observed_at": "2026-07-16T10:00:00Z",
+      "evidence_type": "activity_pattern",
+      "summary": "sloe_scout shows weekday activity 08:00 to 12:00 UTC.",
+      "confidence": 0.6
+    }
+  ],
+  "data_mode": "synthetic"
+}

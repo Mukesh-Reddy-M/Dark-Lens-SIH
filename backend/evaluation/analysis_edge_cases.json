@@ -1,0 +1,62 @@
+{
+  "case": {"id": "NIGHTJAR-EDGE-CASES", "synthetic": true},
+  "sources": [
+    {"id": "edge-source-a", "name": "Synthetic archive A", "reliability": 0.9},
+    {"id": "edge-source-b", "name": "Synthetic archive B", "reliability": 0.8}
+  ],
+  "entities": [
+    {"id": "handle-mothlight", "display_label": "mothlight"},
+    {"id": "handle-m0thl1ght", "display_label": "m0thl1ght"},
+    {"id": "handle-coldfinch", "display_label": "coldfinch"},
+    {"id": "handle-cold-finch", "display_label": "cold_finch"},
+    {"id": "handle-ashwren", "display_label": "ashwren"},
+    {"id": "service-gravel", "display_label": "gravel.synthetic.invalid"},
+    {"id": "service-paperwasp", "display_label": "paperwasp.synthetic.invalid"},
+    {"id": "service-lantern", "display_label": "lanternrow.synthetic.invalid"},
+    {"id": "host-lantern", "display_label": "198.51.100.23 · TEST-NET"},
+    {"id": "handle-dawn-drift", "type": "handle", "display_label": "dawn_drift"},
+    {"id": "handle-night-signal", "type": "handle", "display_label": "night_signal"},
+    {"id": "handle-day-signal", "type": "handle", "display_label": "day_signal"},
+    {"id": "handle-one-sample", "type": "handle", "display_label": "one_sample"}
+  ],
+  "evidence": [
+    {"id": "edge-key-a", "source_id": "edge-source-a", "entity_id": "handle-mothlight", "confidence": 0.9, "details": {"key": "FP-SYNTH-001"}},
+    {"id": "edge-key-b", "source_id": "edge-source-b", "entity_id": "handle-m0thl1ght", "confidence": 0.85, "details": {"key": "fp-synth-001"}},
+    {"id": "edge-wallet-a", "source_id": "edge-source-a", "entity_id": "handle-mothlight", "confidence": 0.9, "details": {"wallet": "SYNTH-W1"}},
+    {"id": "edge-wallet-b", "source_id": "edge-source-b", "entity_id": "handle-m0thl1ght", "confidence": 0.85, "details": {"wallet": "synth-w1"}},
+    {"id": "edge-lookalike-a", "source_id": "edge-source-a", "entity_id": "handle-coldfinch", "confidence": 0.9, "details": {"claimed_handle": "cold_finch", "phrase": "stay safe"}},
+    {"id": "edge-lookalike-b", "source_id": "edge-source-b", "entity_id": "handle-cold-finch", "confidence": 0.8, "details": {"claimed_handle": "coldfinch", "phrase": "stay safe"}},
+    {"id": "edge-boilerplate", "source_id": "edge-source-a", "entity_id": "handle-ashwren", "confidence": 0.9, "details": {"phrase": "Read the vendor guide before opening a dispute"}},
+    {"id": "edge-banner-a", "source_id": "edge-source-a", "entity_id": "service-gravel", "confidence": 0.9, "details": {"banner": "nginx/1.18-synth", "certificate": "CS-0002", "ip": "203.0.113.40"}},
+    {"id": "edge-banner-b", "source_id": "edge-source-b", "entity_id": "service-paperwasp", "confidence": 0.8, "details": {"banner": "nginx/1.18-synth", "certificate": "CS-0003", "ip": "192.0.2.77"}},
+    {"id": "edge-host-cert-a", "source_id": "edge-source-a", "entity_id": "service-lantern", "confidence": 0.9, "details": {"certificate": "CS-0001", "ip": "198.51.100.23"}},
+    {"id": "edge-host-cert-b", "source_id": "edge-source-b", "entity_id": "host-lantern", "confidence": 0.8, "details": {"certificate": "cs-0001", "ip": "198.51.100.23"}},
+    {"id": "edge-dawn-1", "source_id": "edge-source-a", "entity_id": "handle-dawn-drift", "evidence_type": "activity_pattern", "observed_at": "2026-01-01T02:10:00Z", "details": {}},
+    {"id": "edge-dawn-2", "source_id": "edge-source-a", "entity_id": "handle-dawn-drift", "evidence_type": "activity_pattern", "observed_at": "2026-01-02T05:10:00+02:00", "details": {}},
+    {"id": "edge-dawn-3", "source_id": "edge-source-b", "entity_id": "handle-dawn-drift", "evidence_type": "activity_pattern", "observed_at": "2026-01-03T02:40:00Z", "details": {}},
+    {"id": "edge-night-1", "source_id": "edge-source-a", "entity_id": "handle-night-signal", "evidence_type": "activity_pattern", "observed_at": "2026-02-01T02:30:00Z", "details": {}},
+    {"id": "edge-night-2", "source_id": "edge-source-b", "entity_id": "handle-night-signal", "evidence_type": "activity_pattern", "observed_at": "2026-02-02T02:45:00Z", "details": {}},
+    {"id": "edge-night-3", "source_id": "edge-source-b", "entity_id": "handle-night-signal", "evidence_type": "activity_pattern", "observed_at": "2026-02-03T03:30:00Z", "details": {}},
+    {"id": "edge-day-1", "source_id": "edge-source-a", "entity_id": "handle-day-signal", "evidence_type": "activity_pattern", "observed_at": "2026-01-01T13:00:00Z", "details": {}},
+    {"id": "edge-day-2", "source_id": "edge-source-a", "entity_id": "handle-day-signal", "evidence_type": "activity_pattern", "observed_at": "2026-01-02T14:00:00Z", "details": {}},
+    {"id": "edge-day-3", "source_id": "edge-source-b", "entity_id": "handle-day-signal", "evidence_type": "activity_pattern", "observed_at": "2026-01-03T14:30:00Z", "details": {}},
+    {"id": "edge-one-sample", "source_id": "edge-source-a", "entity_id": "handle-one-sample", "evidence_type": "activity_pattern", "observed_at": "2026-01-02T02:00:00Z", "details": {}}
+  ],
+  "expected_pairs": [
+    ["handle-mothlight", "handle-m0thl1ght"],
+    ["service-lantern", "host-lantern"]
+  ],
+  "forbidden_pairs": [
+    ["handle-coldfinch", "handle-cold-finch"],
+    ["service-gravel", "service-paperwasp"],
+    ["handle-ashwren", "handle-mothlight"]
+  ],
+  "expected_behavior_pairs": [
+    ["handle-dawn-drift", "handle-night-signal"]
+  ],
+  "forbidden_behavior_pairs": [
+    ["handle-dawn-drift", "handle-day-signal"],
+    ["handle-night-signal", "handle-day-signal"],
+    ["handle-dawn-drift", "handle-one-sample"]
+  ]
+}

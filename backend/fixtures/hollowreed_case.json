@@ -1,0 +1,409 @@
+{
+  "schema_version": "1.0",
+  "case": {
+    "id": "CASE-2026-002",
+    "title": "Hollowreed",
+    "description": "Fictional case for demonstration: a vendor of counterfeit event tickets migrates between three invented marketplaces (1 Jul - 30 Sep 2026). All names, identifiers and events are invented."
+  },
+  "sources": [
+    {
+      "id": "SRC-01",
+      "name": "Tallow Bazaar archived dump",
+      "source_type": "archived_market_dump",
+      "reliability": 0.9
+    },
+    {
+      "id": "SRC-02",
+      "name": "Quillmarket archived dump",
+      "source_type": "archived_market_dump",
+      "reliability": 0.85
+    },
+    {
+      "id": "SRC-03",
+      "name": "Dunmere Exchange archived dump",
+      "source_type": "archived_market_dump",
+      "reliability": 0.8
+    },
+    {
+      "id": "SRC-04",
+      "name": "Public scan snapshot",
+      "source_type": "public_scan",
+      "reliability": 0.8
+    },
+    {
+      "id": "SRC-05",
+      "name": "Certificate transparency log",
+      "source_type": "ct_log",
+      "reliability": 0.85
+    },
+    {
+      "id": "SRC-06",
+      "name": "Public ledger extract",
+      "source_type": "blockchain_public",
+      "reliability": 0.9
+    },
+    {
+      "id": "SRC-07",
+      "name": "Dunmere forum scrape",
+      "source_type": "forum_scrape",
+      "reliability": 0.55
+    },
+    {
+      "id": "SRC-08",
+      "name": "Analyst note",
+      "source_type": "analyst_note",
+      "reliability": 0.5
+    }
+  ],
+  "entities": [
+    {
+      "id": "ENT-001",
+      "type": "handle",
+      "display_label": "saltmarsh (Tallow Bazaar)"
+    },
+    {
+      "id": "ENT-002",
+      "type": "handle",
+      "display_label": "s4ltmarsh (Quillmarket)"
+    },
+    {
+      "id": "ENT-003",
+      "type": "handle",
+      "display_label": "brine_wolf (Dunmere Exchange)"
+    },
+    {
+      "id": "ENT-004",
+      "type": "handle",
+      "display_label": "paperkite (Tallow Bazaar)"
+    },
+    {
+      "id": "ENT-005",
+      "type": "handle",
+      "display_label": "ember_quill (Dunmere Exchange)"
+    },
+    {
+      "id": "ENT-006",
+      "type": "handle",
+      "display_label": "saltmarsh_official (Dunmere Exchange)"
+    },
+    {
+      "id": "ENT-007",
+      "type": "pgp_key",
+      "display_label": "FP3 5EED 0B33 CE00 0000 0000 0000 0000 0000 5EED 0003"
+    },
+    {
+      "id": "ENT-008",
+      "type": "pgp_key",
+      "display_label": "FP4 5EED 0B44 CE00 0000 0000 0000 0000 0000 5EED 0004"
+    },
+    {
+      "id": "ENT-009",
+      "type": "wallet",
+      "display_label": "SYNTH-W3-SALT0000000000000003"
+    },
+    {
+      "id": "ENT-010",
+      "type": "wallet",
+      "display_label": "SYNTH-W4-KITE0000000000000004"
+    },
+    {
+      "id": "ENT-011",
+      "type": "wallet",
+      "display_label": "SYNTH-EXCH-HOT-000000000001"
+    },
+    {
+      "id": "ENT-012",
+      "type": "service",
+      "display_label": "Tallow Bazaar (tallowbazaar.synthetic.invalid)"
+    },
+    {
+      "id": "ENT-013",
+      "type": "service",
+      "display_label": "Quillmarket (quillmarket.synthetic.invalid)"
+    },
+    {
+      "id": "ENT-014",
+      "type": "service",
+      "display_label": "Dunmere Exchange (dunmere.synthetic.invalid)"
+    },
+    {
+      "id": "ENT-015",
+      "type": "infrastructure",
+      "display_label": "198.51.100.88 (cert CS-1001)"
+    },
+    {
+      "id": "ENT-016",
+      "type": "infrastructure",
+      "display_label": "203.0.113.101 (cert CS-1002)"
+    },
+    {
+      "id": "ENT-017",
+      "type": "infrastructure",
+      "display_label": "192.0.2.150 (cert CS-1003)"
+    }
+  ],
+  "observations": [
+    {
+      "id": "OBS-001",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-001",
+      "observed_at": "2026-07-02T14:10:00Z",
+      "evidence_type": "profile_created",
+      "summary": "Handle saltmarsh created on Tallow Bazaar.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-002",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-007",
+      "observed_at": "2026-07-02T14:12:00Z",
+      "evidence_type": "key_listed",
+      "summary": "saltmarsh profile on Tallow Bazaar lists PGP-style key FP3.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-003",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-001",
+      "observed_at": "2026-07-06T14:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "saltmarsh listing signs off 'fair winds, fair prices' and writes dates as DD-Mon-YYYY.",
+      "confidence": 0.6
+    },
+    {
+      "id": "OBS-004",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-001",
+      "observed_at": "2026-07-08T15:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "saltmarsh listing also contains the template line 'No refunds after delivery' (widely used boilerplate).",
+      "confidence": 0.3
+    },
+    {
+      "id": "OBS-005",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-009",
+      "observed_at": "2026-07-09T15:05:00Z",
+      "evidence_type": "wallet_listed",
+      "summary": "saltmarsh payment instructions use wallet W3.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-006",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-004",
+      "observed_at": "2026-07-14T13:55:00Z",
+      "evidence_type": "profile_created",
+      "summary": "Handle paperkite created on Tallow Bazaar.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-007",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-008",
+      "observed_at": "2026-07-14T13:57:00Z",
+      "evidence_type": "key_listed",
+      "summary": "paperkite profile lists PGP-style key FP4.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-008",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-004",
+      "observed_at": "2026-07-18T14:40:00Z",
+      "evidence_type": "writing_style",
+      "summary": "paperkite posts open with 'Kindly note' and use two spaces after full stops.",
+      "confidence": 0.55
+    },
+    {
+      "id": "OBS-009",
+      "source_id": "SRC-04",
+      "entity_id": "ENT-012",
+      "observed_at": "2026-07-21T10:00:00Z",
+      "evidence_type": "status_page_leak",
+      "summary": "Tallow Bazaar staging status page exposes certificate serial CS-1001 and address 198.51.100.88.",
+      "confidence": 0.8
+    },
+    {
+      "id": "OBS-010",
+      "source_id": "SRC-05",
+      "entity_id": "ENT-015",
+      "observed_at": "2026-07-23T09:20:00Z",
+      "evidence_type": "certificate",
+      "summary": "Certificate transparency log shows CS-1001 issued for 198.51.100.88.",
+      "confidence": 0.85
+    },
+    {
+      "id": "OBS-011",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-010",
+      "observed_at": "2026-07-27T15:15:00Z",
+      "evidence_type": "wallet_listed",
+      "summary": "paperkite payment instructions use wallet W4.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-012",
+      "source_id": "SRC-02",
+      "entity_id": "ENT-002",
+      "observed_at": "2026-08-01T14:25:00Z",
+      "evidence_type": "profile_created",
+      "summary": "Handle s4ltmarsh created on Quillmarket.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-013",
+      "source_id": "SRC-02",
+      "entity_id": "ENT-007",
+      "observed_at": "2026-08-01T14:27:00Z",
+      "evidence_type": "key_listed",
+      "summary": "s4ltmarsh profile on Quillmarket lists PGP-style key FP3.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-014",
+      "source_id": "SRC-02",
+      "entity_id": "ENT-009",
+      "observed_at": "2026-08-03T14:50:00Z",
+      "evidence_type": "wallet_listed",
+      "summary": "s4ltmarsh payment instructions use wallet W3.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-015",
+      "source_id": "SRC-02",
+      "entity_id": "ENT-002",
+      "observed_at": "2026-08-05T15:20:00Z",
+      "evidence_type": "writing_style",
+      "summary": "s4ltmarsh signs off 'fair winds, fair prices' and writes dates as DD-Mon-YYYY.",
+      "confidence": 0.6
+    },
+    {
+      "id": "OBS-016",
+      "source_id": "SRC-03",
+      "entity_id": "ENT-005",
+      "observed_at": "2026-08-08T14:05:00Z",
+      "evidence_type": "profile_created",
+      "summary": "Handle ember_quill created on Dunmere Exchange; no key listed.",
+      "confidence": 0.8
+    },
+    {
+      "id": "OBS-017",
+      "source_id": "SRC-03",
+      "entity_id": "ENT-005",
+      "observed_at": "2026-08-10T14:50:00Z",
+      "evidence_type": "writing_style",
+      "summary": "ember_quill posts open with 'Kindly note' and use two spaces after full stops.",
+      "confidence": 0.5
+    },
+    {
+      "id": "OBS-018",
+      "source_id": "SRC-03",
+      "entity_id": "ENT-005",
+      "observed_at": "2026-08-12T15:40:00Z",
+      "evidence_type": "posting_pattern",
+      "summary": "ember_quill posts cluster between 14:00 and 16:00 UTC.",
+      "confidence": 0.45
+    },
+    {
+      "id": "OBS-019",
+      "source_id": "SRC-03",
+      "entity_id": "ENT-005",
+      "observed_at": "2026-08-14T12:00:00Z",
+      "evidence_type": "writing_style",
+      "summary": "ember_quill listing contains the template line 'No refunds after delivery' (widely used boilerplate).",
+      "confidence": 0.3
+    },
+    {
+      "id": "OBS-020",
+      "source_id": "SRC-04",
+      "entity_id": "ENT-016",
+      "observed_at": "2026-08-17T11:30:00Z",
+      "evidence_type": "banner",
+      "summary": "Quillmarket host 203.0.113.101 shows banner nginx/1.20-synth and cert CS-1002.",
+      "confidence": 0.8
+    },
+    {
+      "id": "OBS-021",
+      "source_id": "SRC-04",
+      "entity_id": "ENT-017",
+      "observed_at": "2026-08-20T11:45:00Z",
+      "evidence_type": "banner",
+      "summary": "Dunmere host 192.0.2.150 shows banner nginx/1.20-synth and cert CS-1003.",
+      "confidence": 0.8
+    },
+    {
+      "id": "OBS-022",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-004",
+      "observed_at": "2026-08-22T14:30:00Z",
+      "evidence_type": "posting_pattern",
+      "summary": "paperkite still posting on Tallow Bazaar between 14:00 and 16:00 UTC.",
+      "confidence": 0.55
+    },
+    {
+      "id": "OBS-023",
+      "source_id": "SRC-01",
+      "entity_id": "ENT-001",
+      "observed_at": "2026-08-28T14:30:00Z",
+      "evidence_type": "account_inactive",
+      "summary": "saltmarsh posts 'moving the shop' and the account goes inactive on Tallow Bazaar.",
+      "confidence": 0.9
+    },
+    {
+      "id": "OBS-024",
+      "source_id": "SRC-03",
+      "entity_id": "ENT-003",
+      "observed_at": "2026-09-02T14:20:00Z",
+      "evidence_type": "profile_created",
+      "summary": "Handle brine_wolf created on Dunmere Exchange; no key listed.",
+      "confidence": 0.8
+    },
+    {
+      "id": "OBS-025",
+      "source_id": "SRC-03",
+      "entity_id": "ENT-009",
+      "observed_at": "2026-09-04T14:45:00Z",
+      "evidence_type": "wallet_listed",
+      "summary": "brine_wolf payment instructions use wallet W3.",
+      "confidence": 0.85
+    },
+    {
+      "id": "OBS-026",
+      "source_id": "SRC-06",
+      "entity_id": "ENT-011",
+      "observed_at": "2026-09-06T10:00:00Z",
+      "evidence_type": "payment_flow",
+      "summary": "Ledger shows W3 and W4 both send payouts to a shared exchange hot wallet used by many unrelated accounts.",
+      "confidence": 0.4
+    },
+    {
+      "id": "OBS-027",
+      "source_id": "SRC-07",
+      "entity_id": "ENT-006",
+      "observed_at": "2026-09-09T16:10:00Z",
+      "evidence_type": "impersonation_claim",
+      "summary": "saltmarsh_official on Dunmere claims to be the original saltmarsh; no key, signs off 'regards'.",
+      "confidence": 0.35
+    },
+    {
+      "id": "OBS-028",
+      "source_id": "SRC-03",
+      "entity_id": "ENT-003",
+      "observed_at": "2026-09-10T14:55:00Z",
+      "evidence_type": "writing_style",
+      "summary": "brine_wolf signs off 'fair winds, fair prices' and writes dates as DD-Mon-YYYY.",
+      "confidence": 0.6
+    },
+    {
+      "id": "OBS-029",
+      "source_id": "SRC-08",
+      "entity_id": "ENT-005",
+      "observed_at": "2026-09-15T12:00:00Z",
+      "evidence_type": "analyst_note",
+      "summary": "ember_quill and paperkite share two style quirks, but both were active at the same time in August, which lowers the chance of a migration. Needs more evidence.",
+      "confidence": 0.4
+    }
+  ],
+  "data_mode": "synthetic"
+}

@@ -1,0 +1,68 @@
+{
+  "description": "Hollowreed — a vendor of counterfeit event tickets migrates between three invented marketplaces (Tallow Bazaar, Quillmarket, Dunmere Exchange). saltmarsh, s4ltmarsh, and brine_wolf share PGP key FP3, wallet W3, and sign-off habits. Tallow Bazaar shares certificate CS-1001 with host 198.51.100.88. paperkite and ember_quill share weak writing habits but have concurrent activity. saltmarsh_official is an unverified self-claim decoy, W3/W4 exchange hot wallet is a financial decoy, and shared boilerplate is a weak text decoy.",
+  "synthetic_only": true,
+  "personas": [
+    {
+      "description": "Likely same operator across migrations: saltmarsh, s4ltmarsh, and brine_wolf",
+      "entities": ["ENT-001", "ENT-002", "ENT-003"]
+    }
+  ],
+  "links": [
+    {
+      "id": "HR-L001",
+      "pair": ["ENT-001", "ENT-002"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "saltmarsh (Tallow) <-> s4ltmarsh (Quill): shared PGP FP3, wallet W3, and sign-off style"
+    },
+    {
+      "id": "HR-L002",
+      "pair": ["ENT-012", "ENT-015"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "Tallow Bazaar <-> 198.51.100.88: matching certificate serial CS-1001"
+    },
+    {
+      "id": "HR-L003",
+      "pair": ["ENT-001", "ENT-003"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "saltmarsh (Tallow) <-> brine_wolf (Dunmere): shared wallet W3 and sign-off style"
+    },
+    {
+      "id": "HR-L004",
+      "pair": ["ENT-002", "ENT-003"],
+      "type": "strong",
+      "expected_score": ">=0.85",
+      "note": "s4ltmarsh (Quill) <-> brine_wolf (Dunmere): shared wallet W3 and sign-off style"
+    },
+    {
+      "id": "HR-L005",
+      "pair": ["ENT-004", "ENT-005"],
+      "type": "weak",
+      "expected_score": "<=0.45",
+      "note": "paperkite <-> ember_quill: weak reported style similarity, concurrent activity noted"
+    },
+    {
+      "id": "HR-D001",
+      "pair": ["ENT-001", "ENT-006"],
+      "type": "decoy",
+      "expected_score": "<0.30",
+      "note": "saltmarsh <-> saltmarsh_official: unverified self-claim without cryptographic proof (impersonation decoy)"
+    },
+    {
+      "id": "HR-D002",
+      "pair": ["ENT-009", "ENT-010"],
+      "type": "decoy",
+      "expected_score": "<0.30",
+      "note": "W3 <-> W4: shared exchange deposit/hot wallet with high transaction volume (common service decoy)"
+    },
+    {
+      "id": "HR-D003",
+      "pair": ["ENT-001", "ENT-005"],
+      "type": "decoy",
+      "expected_score": "<0.30",
+      "note": "saltmarsh <-> ember_quill: shared public boilerplate template 'No refunds after delivery' (text decoy)"
+    }
+  ]
+}
