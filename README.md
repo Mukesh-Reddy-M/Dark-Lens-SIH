@@ -54,10 +54,13 @@ The SIH proposal also describes an analyst dashboard, timeline queries, source r
 - **Nightjar synthetic case:** fixed fixture with **22 entities, 24 observations, 6 synthetic sources, and 6 candidate links**.
 - **Relationship graph:** SVG graph built from case links and evidence identifier associations. Nodes can be selected and dragged; graph controls include layout selection, zoom, recenter, and fullscreen.
 - **Evidence panel:** selected-record details, associated evidence, source reliability summary, and candidate-link review controls.
-- **Analyst review:** Accept, Reject, and More evidence actions update a link through the API and write an audit event. The UI reloads the case after a review action.
+- **Review queue:** dedicated sidebar view of all six candidate links, filterable by review state, with endpoint labels, evidence provenance, signal breakdowns, caution notes, and Accept, Reject, or More evidence actions.
+- **Analyst review:** decisions update a link through the API, write an audit event, and reload the case. No link is automatically accepted.
+- **Audit history:** a second Review Queue view lists recorded decisions with candidate ID, previous/new state, analyst label, timestamp, and note.
+- **Synthetic analysis preview:** read-only matching finds exact shared PGP keys, wallets, certificate serials, and IPs, plus a separate UTC activity-window overlap lead using only explicit activity observations with at least three samples across two dates. Behavioural leads are capped at 45% and marked as needing more evidence; results are not saved.
 - **Timeline:** 24 chronological synthetic observations with range filtering. Hovering or selecting an event opens an explanation panel with the observation summary, plain-language interpretation, source and reliability, evidence confidence, and any candidate link that uses it.
-- **Navigation and search:** sidebar navigation scrolls to case sections or opens Reports, Saved Searches, and Settings panels. Entity search selects a matching record in the graph.
-- **Exports:** full-case JSON and separate CSV downloads for entities, evidence, and links.
+- **Navigation and search:** sidebar navigation scrolls to case sections or opens Review Queue, Reports, Saved Searches, and Settings panels. Entity search selects a matching record in the graph.
+- **Reports and exports:** generated Markdown case report with link explanations, evidence provenance, review states, cautions, and audit history; full-case JSON and CSV downloads for entities, evidence, links, and audit events.
 - **Saved searches:** stored in browser local storage on the current device.
 - **Graph preference:** Settings can show or hide evidence-derived associations.
 
@@ -94,10 +97,10 @@ SQLite case database  ◄── fixed Nightjar JSON fixture
 | API | Python, FastAPI, Uvicorn | Runs locally on port 8001 by default. |
 | Persistence | SQLite | Default database path is `data/darklens.sqlite3`; can be changed with `DARKLENS_DB_PATH`. |
 | Case data | `backend/fixtures/nightjar_seed.json` | Deterministic synthetic seed data. |
-| Scoring | Transparent independent-signal combination | Each signal contributes match strength × source reliability; the combined triage score is capped as configured. It is not a calibrated probability. |
-| Evaluation | `backend/evaluation/evaluate_case.py` and separate answer key | Checks the fixed synthetic fixture expectations; this is not real-world model validation. |
+| Scoring | Transparent independent-signal combination | Each signal contributes match strength × source reliability; behavioural-only leads are capped at 45%. These are review scores, not calibrated probabilities. |
+| Evaluation | `backend/evaluation/evaluate_case.py` plus synthetic edge fixtures | Checks candidate links, audit requirements, exact-match positives, misleading-match negatives, and weak activity-only leads; this is not real-world model validation. |
 
-The current build does **not** include PostgreSQL, Neo4j, OpenSearch, live collectors, an autonomous scheduler, a trained ML model, or an LLM. Persona-style and activity evidence is prewritten in the synthetic fixture; the prototype does not train or run a stylometry model yet. Those remain future work from the proposal.
+The current build does **not** include PostgreSQL, Neo4j, OpenSearch, live collectors, an autonomous scheduler, a trained ML model, or an LLM. The activity analysis is a small transparent UTC-hour overlap rule over synthetic timestamps. There are not yet enough raw writing samples for a meaningful stylometry model, so that remains future work from the proposal.
 
 ## API overview
 
@@ -107,15 +110,33 @@ The local API reference is available at `http://127.0.0.1:8001/docs` while the b
 | --- | --- | --- |
 | `GET` | `/api/health` | Service health and synthetic-data indicator. |
 | `GET` | `/api/cases` | List local cases. |
-| `GET` | `/api/cases/{case_id}` | Fetch case, entities, sources, evidence, links, and audit events. |
+| `GET` | `/api/cases/{case_id}` | Fetch case, entities, sources, evidence, links, and audit events for the history view. |
 | `GET` | `/api/cases/{case_id}/timeline` | Fetch observations in chronological order. |
+| `GET` | `/api/cases/{case_id}/analysis` | Read-only exact-value match preview for a synthetic case; does not persist suggestions. |
 | `PATCH` | `/api/links/{link_id}/review` | Set `accepted`, `rejected`, `needs_more_evidence`, or `unreviewed`; writes an audit event. |
 | `GET` | `/api/cases/{case_id}/export.json` | Download a full case JSON export. |
-| `GET` | `/api/cases/{case_id}/export.csv` with `kind=entities`, `kind=evidence`, or `kind=links` | Download a selected record collection as CSV. |
+| `GET` | `/api/cases/{case_id}/report.md` | Download a human-readable case report with evidence and audit history. |
+| `GET` | `/api/cases/{case_id}/export.csv` with `kind=entities`, `kind=evidence`, `kind=links`, or `kind=audit` | Download a selected record collection as CSV. |
 
 ## Run locally
 
 Requirements: Node.js/npm and Python 3.9 or later.
+
+### Important: use the import path for your current folder
+
+The Uvicorn module path depends on the working directory. If the terminal prompt ends in `backend %` (as in the setup shown), you are already inside `backend/`; run:
+
+```bash
+uvicorn app.main:app --reload --port 8001
+```
+
+If you are at the repository root (`Dark-Lens %`), use:
+
+```bash
+python -m uvicorn backend.app.main:app --reload --port 8001
+```
+
+The dashboard expects the API on port **8001** by default. The command `uvicorn backend.app.main:app` from inside `backend/` causes `ModuleNotFoundError: No module named 'backend'`, because Python then looks for a nested `backend/backend` package. Omitting `--port 8001` also starts Uvicorn on port 8000, which does not match the dashboard's default API address.
 
 ### 1. Start the backend
 
@@ -155,10 +176,11 @@ python -m backend.app.seed --reset-nightjar
 Export a JSON case from the app/API, then run:
 
 ```bash
-python backend/evaluation/evaluate_case.py path/to/case-export.json
+python -m backend.evaluation.evaluate_case path/to/case-export.json
+python -m backend.evaluation.check_review_workflow
 ```
 
-The report is a deterministic check against synthetic expected outcomes only. It must not be presented as evidence of production accuracy.
+The first command checks expected Nightjar links, audit requirements, exact-matching edge cases, and positive/negative activity-profile cases from `analysis_edge_cases.json`. The second verifies that analysis is read-only, then exercises accept, reject, and more-evidence actions against a disposable temporary database and confirms the decisions persist with audit events. Neither command should be presented as real-world model validation.
 
 ## Repository map
 
@@ -167,13 +189,16 @@ backend/
   app/
     database.py          SQLite schema, fixture loading, and case payloads
     main.py              FastAPI endpoints for case data, review, and exports
+    analysis.py          Read-only identifier, infrastructure, and cautious activity-window analysis
     scoring.py           Explainable review-priority score calculation
     seed.py              Load or reset the Nightjar fixture
   fixtures/
     nightjar_seed.json   Fictional case entities, sources, observations, links
   evaluation/
     answer_key.json      Expected outcomes used only by the local evaluator
+    analysis_edge_cases.json  Positive and adversarial identifier and activity cases
     evaluate_case.py     Synthetic fixture evaluation script
+    check_review_workflow.py  Isolated review persistence and audit check
 src/
   App.jsx                Dashboard, graph, evidence, timeline, and interactions
   api.js                 Frontend API calls and export URLs
@@ -195,10 +220,26 @@ requirements.txt         Python API dependencies
 1. **Complete SIH team record:** add the verified registered-member names and actual contributions from the SIH team portal; assign a presenter and demo responsibilities.
 2. **Stabilize the demo:** add API and UI interaction tests for case loading, review updates, audit events, filters, exports, and reset behavior.
 3. **Strengthen the synthetic evaluation:** report per-link outcomes and precision/recall at explicitly stated thresholds; include limitations and avoid describing fixture checks as model performance.
-4. **Improve analyst workflow:** add a dedicated link-review queue, complete audit-history view, and richer evidence provenance in exports.
-5. **Prototype one explainable analysis module at a time:** start with deterministic identifier/infrastructure matching; then evaluate a small stylometry baseline on labelled, consented or public research text. Keep source reliability and human review visible.
-6. **Prepare the SIH presentation:** show the problem, safe synthetic workflow, Nightjar case walkthrough, architecture, measured fixture results, risks, and a clearly scoped future plan.
+4. **Improve review reporting:** add audit-event export and a fuller analyst identity model.
+5. **Expand matcher evaluation:** add more adversarial fixtures and measure missed and false matches before using the rules beyond demo leads.
+6. **Prototype further analysis carefully:** only after rule evaluation, consider a small stylometry baseline on labelled, consented or public research text. Keep source reliability and human review visible.
+7. **Prepare the SIH presentation:** show the problem, safe synthetic workflow, Nightjar case walkthrough, architecture, measured fixture results, risks, and a clearly scoped future plan.
 
 ## Current status summary
 
-**Stage:** local, synthetic-data prototype with a connected dashboard and API. The case workflow and user-interface interactions are implemented; automated collection and trained analysis modules are not. The immediate team priority is to complete the official roster, stabilize the demo, and present the synthetic evaluation honestly.
+**Stage:** local, synthetic-data prototype with a connected dashboard and API. The Nightjar review queue, audit-history view, isolated persistence workflow, explainable identifier/infrastructure matching, cautious activity-window analysis, case report, and audit export are implemented. The evaluator covers strong and weak links plus adversarial handle, phrase, banner, and activity samples. Automated collection and trained stylometry are not. The next priority is expanding labelled synthetic coverage and reviewing the prototype with the SIH team.
+
+### Rough whole-project completion estimate
+
+As of **20 October 2026**, the project is approximately **55% complete** against the full proposed platform. This is a rough, unweighted average of the workstream estimates below, not a measured software metric:
+
+| Workstream | Estimate | Remaining work |
+| --- | ---: | --- |
+| Dashboard and analyst workflow | 85% | UI polish and full browser interaction verification. |
+| API, storage, and reporting | 80% | Authentication/roles, stronger schema and deployment hardening. |
+| Explainable analysis | 50% | Better validated matching, stylometry research baseline, calibrated scores. |
+| Synthetic case and evaluation | 70% | Larger labelled fixtures and broader false-match measurements. |
+| Security, source governance, and operations | 10% | Threat model, access controls, lawful source process, monitoring and deployment. |
+| SIH team and presentation readiness | 35% | Confirm roster, team walkthrough, demo script, and final presentation. |
+
+The estimate includes the recent activity-window analysis, richer exports, and expanded synthetic edge checks. It does not count live collection, a trained stylometry model, or production deployment as complete.
